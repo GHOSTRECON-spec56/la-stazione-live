@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="La Stazione coffee shop menu, café gallery, location, Instagram, and contact details."
+    />
+    <title>La Stazione Coffee Shop</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="hero-cafe.webp" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.css?v=15" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand-mark" href="#home" aria-label="La Stazione home">
+          <img class="brand-icon" src="brand-logo.jpg" alt="" />
+          <span>La Stazione</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#menu">Menu</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Location</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="header-action" href="#menu">Explore Menu</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-label="La Stazione introduction">
+        <img
+          class="hero-image"
+          src="hero-cafe.webp"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <p class="eyebrow">Specialty Coffee · Beit Chabab</p>
+          <h1>Your pause,<br />beautifully brewed.</h1>
+          <p class="hero-copy">
+            Specialty coffee, matcha and fresh pastries served in a warm corner
+            of Beit Chabab.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#menu">Explore Our Menu</a>
+            <a
+              class="button secondary"
+              href="https://www.google.com/maps/place/La+Stazione/@33.9231475,35.664583,17z/data=!3m1!4b1!4m6!3m5!1s0x151f39792d41e1cf:0x31ad1e4f64de2ca4!8m2!3d33.9231475!4d35.664583!16s%2Fg%2F11yv74hh79"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get Directions
+            </a>
+          </div>
+          <div class="hero-partners" aria-label="Coffee and equipment partners">
+            <span class="partner-badge partner-badge-illy">
+              <img src="logo-illy.png" width="390" height="390" alt="illy coffee" />
+            </span>
+            <span class="partner-badge partner-badge-marzocco">
+              <img
+                src="logo-la-marzocco.png"
+                width="505"
+                height="58"
+                alt="La Marzocco espresso machines"
+              />
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-info" aria-label="Opening hours and location">
+          Open daily 7 AM–9 PM · Beit Chabab · Coffee, matcha and fresh pastries
+        </div>
+
+        <a class="scroll-indicator" href="#welcome" aria-label="Scroll to welcome section">
+          <span>Scroll</span>
+          <i aria-hidden="true"></i>
+        </a>
+      </section>
+
+      <section class="intro-band" id="welcome" aria-label="Welcome">
+        <div class="section-inner split">
+          <p class="large-statement">
+            Built like a neighborhood station: easy to find, easy to love, and
+            always ready for one more cup.
+          </p>
+          <p>
+            Explore the drinks menu, see the products in motion, and use the
+            contact links to reach the shop directly.
+          </p>
+        </div>
+      </section>
+
+      <section class="menu-section" id="menu">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Menu</p>
+              <h2>Drinks and Favorites</h2>
+            </div>
+            <p>Choose a price currency, then tap a menu category.</p>
+          </div>
+
+          <div class="menu-tools" aria-label="Menu filters">
+            <label class="search-field">
+              <span>Search menu</span>
+              <input id="menu-search" type="search" placeholder="Latte, matcha, tea..." />
+            </label>
+            <div class="price-control">
+              <span>Prices</span>
+              <div class="price-options" id="price-options" aria-label="Price currency">
+                <button class="is-active" type="button" data-currency="lbp" aria-pressed="true">LBP</button>
+                <button type="button" data-currency="usd" aria-pressed="false">USD</button>
+              </div>
+            </div>
+            <div class="menu-filter-group">
+              <span>Main categories</span>
+              <div class="main-category-tabs" id="main-category-tabs" aria-label="Main menu categories"></div>
+            </div>
+            <div class="menu-filter-group subcategory-group">
+              <span>Subcategories</span>
+              <div class="category-tabs" id="category-tabs" aria-label="Menu subcategories"></div>
+            </div>
+          </div>
+
+          <div class="menu-notice" id="menu-notice" aria-live="polite" hidden></div>
+          <div class="menu-grid" id="menu-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Gallery</p>
+              <h2>Life at La Stazione</h2>
+            </div>
+            <p>Coffee, fresh food, mountain views, and the people who make the shop feel local.</p>
+          </div>
+
+          <div class="photo-feed" aria-label="La Stazione photo gallery">
+            <figure class="photo-item"><img src="gallery/gallery-17.webp" alt="Coffee served at sunset on the La Stazione terrace" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-07.webp" alt="Illy cappuccino with latte art" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-01.webp" alt="Baguette sandwiches and salad served at La Stazione" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-15.webp" alt="Fresh smoothies with a mountain and sea view" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-13.webp" alt="Chocolate dessert and an illy cappuccino" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-12.webp" alt="Chess gathering inside La Stazione" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-08.webp" alt="Fresh chocolate pastry close-up" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-20.webp" alt="Assorted baguette sandwiches on a wooden board" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-03.webp" alt="Latte art coffee close-up" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-06.webp" alt="Friends playing a board game at La Stazione" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-11.webp" alt="A buffet of croissants, sandwiches, and muffins" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-04.webp" alt="Strawberry and pistachio smoothies" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-09.webp" alt="Layered chocolate coffee drink" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-16.webp" alt="Chess match with coffee at La Stazione" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-18.webp" alt="Fresh baguette sandwich platter" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-05.webp" alt="Illy latte served on a café table" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-02.webp" alt="Salads, toasted sandwiches, and cappuccino" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-10.webp" alt="Cappuccino finished with cocoa and latte art" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-14.webp" alt="Chocolate dessert and coffee by the window" loading="lazy" decoding="async" /></figure>
+            <figure class="photo-item"><img src="gallery/gallery-19.webp" alt="Mixed white and cereal baguette sandwiches" loading="lazy" decoding="async" /></figure>
+          </div>
+
+          <div class="reels-heading">
+            <p class="eyebrow">Reels</p>
+            <h3>Fresh from the counter</h3>
+          </div>
+          <div class="reels-grid">
+            <article class="reel-card">
+              <video class="lazy-video" muted loop playsinline preload="none" data-src="gallery-croissant.mp4" aria-label="Fresh croissant reel"></video>
+              <span>Fresh Croissants</span>
+            </article>
+            <article class="reel-card">
+              <video class="lazy-video" muted loop playsinline preload="none" data-src="gallery-cappuccino.mp4" aria-label="Cappuccino preparation reel"></video>
+              <span>Cappuccino Craft</span>
+            </article>
+            <article class="reel-card">
+              <video class="lazy-video" muted loop playsinline preload="none" data-src="gallery-large.mp4" aria-label="Large iced drinks reel"></video>
+              <span>Iced Favorites</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="location-section" id="location">
+        <div class="section-inner location-layout">
+          <div>
+            <p class="eyebrow">Location</p>
+            <h2>Your Coffee Stop</h2>
+            <p>
+              Find La Stazione on Google Maps and make it your daily stop for
+              coffee, pastries, and takeaway drinks.
+            </p>
+            <a
+              class="button primary"
+              href="https://www.google.com/maps/place/La+Stazione/@33.9231475,35.664583,17z/data=!3m1!4b1!4m6!3m5!1s0x151f39792d41e1cf:0x31ad1e4f64de2ca4!8m2!3d33.9231475!4d35.664583!16s%2Fg%2F11yv74hh79"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open Google Maps
+            </a>
+          </div>
+
+          <div class="map-panel" aria-label="La Stazione Google Maps preview">
+            <iframe
+              class="map-frame"
+              title="La Stazione location on Google Maps"
+              src="https://www.google.com/maps?q=33.9231475,35.664583&z=17&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <a
+              class="map-open-link"
+              href="https://www.google.com/maps/place/La+Stazione/@33.9231475,35.664583,17z/data=!3m1!4b1!4m6!3m5!1s0x151f39792d41e1cf:0x31ad1e4f64de2ca4!8m2!3d33.9231475!4d35.664583!16s%2Fg%2F11yv74hh79"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open La Stazione on Google Maps"
+            >
+              <span class="map-open-label">Open in Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Contact</p>
+              <h2>Reach the Shop</h2>
+            </div>
+            <p>Call, message, or follow La Stazione.</p>
+          </div>
+
+          <div class="contact-grid">
+            <a class="contact-card" href="tel:+96124980899">
+              <span>Landline</span>
+              <strong>+961 24 980 899</strong>
+            </a>
+            <a
+              class="contact-card"
+              href="https://wa.me/96170482604"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>WhatsApp</span>
+              <strong>+961 70 482 604</strong>
+            </a>
+            <a
+              class="contact-card"
+              href="https://www.instagram.com/lastazione.leb/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>Instagram</span>
+              <strong>@lastazione.leb</strong>
+            </a>
+            <div class="contact-card">
+              <span>Hours</span>
+              <strong>Daily, 7:00 AM - 9:00 PM</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>La Stazione</span>
+      <span>Specialty coffee, pastries, and daily rituals.</span>
+    </footer>
+
+    <script src="menu-data.js?v=6"></script>
+    <script src="script.js?v=9"></script>
+  </body>
+</html>
