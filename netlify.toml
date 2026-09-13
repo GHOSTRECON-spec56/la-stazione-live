@@ -9,3 +9,268 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+[[headers]]
+  for = "/owner/*"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' https: data: blob:; connect-src 'self' https://accounts.google.com; frame-src https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+
+# Keep existing saved photo URLs and cached assets working after promotion.
+[[redirects]]
+  from = "/redesign/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v1/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v1/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v1/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v1/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v2/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v2/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v2/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v2/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v3/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v3/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v3/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v3/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v4/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v4/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v4/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v4/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v5/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v5/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v5/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v5/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v6/photos/*"
+  to = "/assets/site/photos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v6/fonts/*"
+  to = "/assets/site/fonts/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v6/art/*"
+  to = "/assets/site/art/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v6/vendor/*"
+  to = "/assets/site/vendor/:splat"
+  status = 301
+  force = true
+
+# Retired preview pages now open the final website. Browser fragments survive
+# these redirects (for example /redesign_v6/#visit becomes /#visit).
+[[redirects]]
+  from = "/redesign"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v1"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v1/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v2"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v2/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v3"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v3/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v4"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v4/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v5"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v5/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v6"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/redesign_v6/*"
+  to = "/"
+  status = 301
+  force = true

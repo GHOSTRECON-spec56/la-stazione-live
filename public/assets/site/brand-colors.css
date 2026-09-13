@@ -1,0 +1,31 @@
+/* Beige leads the composition; brown supplies legible type and clear actions. */
+:root {
+  --action: #70513b;
+  --action-hover: #583e2b;
+  --ribbon: #dec8a7;
+  --visit-sand: #e7d5b8;
+  --field-line: #8a7560;
+}
+.button, .button-light {
+  color: var(--paper);
+  background-color: var(--action);
+  border-color: var(--action);
+}
+.button:hover, .button-light:hover {
+  color: var(--paper);
+  background-color: var(--action-hover);
+  border-color: var(--action-hover);
+}
+.menu-explore { color: var(--accent); border-bottom-color: var(--accent); }
+.menu-explore:hover { color: var(--action); border-bottom-color: var(--action); }
+.coffee-break > .icon, .footer-wordmark > svg { color: var(--action); }
+.mobile-dock a:first-child { background-color: var(--action); color: var(--paper); }
+.menu-search-wrap { border-color: var(--field-line); }
+.coffee-band { background-color: var(--ribbon); color: var(--ink); --flower-center: var(--ribbon); }
+.visit-section { background-color: var(--visit-sand); color: var(--ink); }
+.visit-details h3, .visit-phone { color: var(--muted); }
+.visit-phone span { color: var(--ink); }
+.visit-section a:focus-visible { outline-color: var(--accent); }
+/* Recolor ink strokes only; keep the actual logo and all photos untouched. */
+.ink-art { filter: grayscale(1) sepia(.85) saturate(.7); }
+.visit-art { mix-blend-mode: multiply; opacity: .8; }

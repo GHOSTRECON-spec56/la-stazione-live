@@ -1,4 +1,4 @@
-/* Shared content for the numbered redesign and the permanent printed menu URL. */
+/* Shared content for La Stazione and the permanent printed menu URL. */
 (() => {
   'use strict';
   let content, etag = null, connected = false, lastError = null;
@@ -26,12 +26,16 @@
     } catch (error) {connected = false; lastError = error; throw error;}
   }
   async function save(next, base = etag) {
+    if (!window.LaStazioneAuth) throw new Error('Open the owner workspace and sign in with Google to publish.');
+    await window.LaStazioneAuth.ensureSession();
     const baseEtag = typeof base === 'object' ? base.etag : base;
     if (!baseEtag) throw new Error('Shared storage has not connected. Your draft is safe. Reload the published version before publishing.');
     const result = await jsonFetch(endpoint, {method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:next,etag:baseEtag})});
     content=result.content;etag=result.etag;connected=true;lastError=null;emit();return content;
   }
   async function upload(file) {
+    if (!window.LaStazioneAuth) throw new Error('Open the owner workspace and sign in with Google to upload photos.');
+    await window.LaStazioneAuth.ensureSession();
     if (!(file instanceof Blob) || !file.size) throw new Error('Choose an image to upload.');
     if (file.size > 40_000_000) throw new Error('Choose a photo under 40 MB.');
     const objectURL=URL.createObjectURL(file), img=new Image();

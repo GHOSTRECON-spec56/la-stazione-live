@@ -1,0 +1,83 @@
+/* The album keeps its three-photo composition; native scrolling handles touch. */
+.hero-album.hero-carousel {
+  display: block;
+  max-width: 1080px;
+  width: 100%;
+  padding: 0;
+  margin: 12px auto 0;
+}
+.hero-carousel[hidden] { display: none; }
+.hero-carousel-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+  outline-offset: -3px;
+}
+.hero-carousel-viewport::-webkit-scrollbar { display: none; }
+.hero-carousel-track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--slide-gap, 8px);
+  width: max-content;
+  padding: 22px calc((var(--viewport-width, 1080px) - var(--slide-width, 338px)) / 2) 8px;
+}
+.hero-album .hero-slide {
+  flex: 0 0 var(--slide-width, 338px);
+  width: var(--slide-width, 338px);
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
+  margin: 0;
+}
+.hero-slide-image {
+  transform-origin: center;
+  will-change: auto;
+}
+.hero-album .hero-slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.36;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.hero-album .hero-slide figcaption {
+  min-height: 44px;
+  padding: 16px 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.hero-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 5px;
+}
+.hero-carousel-controls[hidden] { display: none; }
+.hero-carousel-controls .round-button { width: 44px; height: 44px; }
+.hero-carousel-counter { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.hero-carousel-viewport:focus-visible { outline: 2px solid var(--accent); }
+.hero-carousel[data-single="true"] .hero-carousel-track { padding-bottom: 0; }
+@media (max-width: 850px) {
+  .hero-album.hero-carousel { max-width: 800px; }
+  .hero-album .hero-slide figcaption { font-size: 12px; }
+}
+@media (max-width: 620px) {
+  .hero-album.hero-carousel { margin-top: 0; }
+  .hero-carousel-track { padding-top: 18px; }
+  .hero-album .hero-slide img { aspect-ratio: 1.06; border-radius: 5px; }
+  .hero-album .hero-slide figcaption { font-size: 11px; min-height: 42px; padding-top: 12px; }
+  .hero-slide:not([data-active="true"]) figcaption { visibility: hidden; }
+  .hero-carousel-controls { gap: 15px; margin-top: 0; }
+  .hero-carousel-controls .round-button { width: 44px; height: 44px; }
+}
+@media (min-width: 1600px) { .hero-album.hero-carousel { max-width: 1180px; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel-viewport { scroll-behavior: auto; }
+}

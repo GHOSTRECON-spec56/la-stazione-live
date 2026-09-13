@@ -2,7 +2,10 @@
   'use strict';
   const $ = (selector) => document.querySelector(selector);
   const editor = $('#editor');
-  const storageKey = 'la-stazione-owner-draft-v1';
+  const accountEmail = window.LaStazioneAuth?.user?.email?.toLowerCase();
+  if (!accountEmail) return;
+  const legacyStorageKey = 'la-stazione-owner-draft-v1';
+  const storageKey = `la-stazione-owner-draft-v2:${accountEmail}`;
   const clone = (value) => JSON.parse(JSON.stringify(value));
   const escape = (value = '') => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const id = (prefix) => `${prefix}-${crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2)}`;
@@ -292,6 +295,19 @@
     const url = URL.createObjectURL(new Blob([JSON.stringify(content, null, 2)], { type: 'application/json' }));
     const anchor = document.createElement('a'); anchor.href = url; anchor.download = `La-Stazione-${dirty ? 'draft' : 'published'}-${new Date().toISOString().slice(0, 10)}.json`; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
+  window.LaStazioneOwner = {
+    get hasUnpublishedWork() { return dirty || busy || uploading; },
+    persistDraft() { if (content) persist(); },
+    downloadBackup,
+    clearDraft() {
+      clearTimeout(persistTimer);
+      try {
+        localStorage.removeItem(storageKey);
+        if (accountEmail === 'lastazione10@gmail.com') localStorage.removeItem(legacyStorageKey);
+      } catch { /* The in-memory draft is still cleared when storage is unavailable. */ }
+      dirty = false; content = null; published = null; history = [];
+    }
+  };
   document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => { if (busy || uploading) return; tab = button.dataset.tab; render(); }));
   $('#undo').addEventListener('click', undo);
   $('#publish').addEventListener('click', publish);
@@ -315,6 +331,13 @@
       content = normalize(clone(await window.LaStazioneContent.ready));
       published = clone(content); base = JSON.stringify(published); baseEtag = window.LaStazioneContent.getETag();
       try {
+        if (accountEmail === 'lastazione10@gmail.com' && !localStorage.getItem(storageKey)) {
+          const previousDraft = localStorage.getItem(legacyStorageKey);
+          if (previousDraft) {
+            localStorage.setItem(storageKey, previousDraft);
+            localStorage.removeItem(legacyStorageKey);
+          }
+        }
         const cached = JSON.parse(localStorage.getItem(storageKey) || 'null');
         if (cached?.content) {
           const recovered = normalize(cached.content);

@@ -2,4 +2,5 @@
 .netlify
 node_modules/
 .local-data/
+.local-access/
 *.log

@@ -9,23 +9,48 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="owner.css">
   <script src="/site-content/content.js" defer></script>
-  <script src="owner.js" defer></script>
+  <script src="auth.bundle.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#workspace">Skip to editor</a>
+  <a class="skip-link" href="#owner-main">Skip to workspace</a>
   <header class="owner-header">
-    <a class="brand" href="/redesign_v6/"><img src="/brand-logo.jpg" width="48" height="44" alt=""><span>La Stazione<small>Owner workspace</small></span></a>
-    <nav aria-label="Website links"><a href="/redesign_v6/" target="_blank" rel="noopener">View website</a><a href="/menu/" target="_blank" rel="noopener">View menu</a><a href="/menu/qr.svg" download="La-Stazione-menu-QR.svg">Download menu QR</a></nav>
+    <a class="brand" href="/"><img src="/brand-logo.jpg" width="48" height="44" alt=""><span>La Stazione<small>Owner workspace</small></span></a>
+    <nav aria-label="Website links"><a href="/" target="_blank" rel="noopener">View website</a><a href="/menu/" target="_blank" rel="noopener">View menu</a><a href="/menu/qr.svg" download="La-Stazione-menu-QR.svg">Download menu QR</a></nav>
   </header>
-  <main class="workspace" id="workspace">
-    <section class="workspace-heading"><div><h1>A little care, every day.</h1><p>Keep your menu and the moments from La Stazione up to date.</p></div><p class="access-note">Temporary owner access is open. Company email sign-in will be added later.</p></section>
+  <main id="owner-main">
+  <section class="auth-gate" id="auth-gate" aria-labelledby="auth-title" aria-busy="true">
+    <h1 id="auth-title">Your workspace, with care.</h1>
+    <p id="auth-description">Checking your sign-in before opening the menu editor.</p>
+    <div class="auth-actions">
+      <div id="google-sign-in" hidden></div>
+      <button type="button" class="button quiet" id="auth-retry" hidden>Try again</button>
+      <button type="button" class="text-button" id="locked-sign-out" hidden>Sign out</button>
+    </div>
+    <p class="auth-feedback" id="auth-feedback" role="status" aria-live="polite"></p>
+  </section>
+  <div class="workspace" id="workspace" hidden inert>
+    <section class="workspace-heading"><div><h1>A little care, every day.</h1><p>Keep your menu and the moments from La Stazione up to date.</p></div><div class="account-details"><p id="signed-in-email"></p><div><a href="#access-management" id="manage-access-link" hidden>Manage access</a><button type="button" class="text-button" id="sign-out">Sign out</button></div></div></section>
     <div class="save-bar"><div class="save-state"><span class="state-dot" id="state-dot"></span><div><strong id="save-state">Loading your menu…</strong><span id="save-detail">Your changes stay in a draft until you publish.</span></div></div><div class="save-actions"><button type="button" class="button quiet" id="undo" disabled>Undo last action</button><button type="button" class="button quiet" id="discard" disabled>Discard draft</button><button type="button" class="button primary" id="publish" disabled>Publish changes</button></div></div>
     <div class="message" id="message" role="status" aria-live="polite" hidden></div>
     <nav class="workspace-tabs" aria-label="Editing sections"><button type="button" data-tab="items" aria-current="page">Menu items <span id="item-count"></span></button><button type="button" data-tab="structure">Categories &amp; headings</button><button type="button" data-tab="extras">Extras</button><button type="button" data-tab="photos">Photos</button></nav>
     <div id="editor" aria-busy="true"><div class="loading-state"><span class="loading-line"></span><span class="loading-line"></span><span class="loading-line short"></span><p>Opening your workspace…</p></div></div>
-    <footer class="workspace-footer"><p>Changes published here update the QR menu and the latest website. Previous design versions stay as they were.</p><div><button type="button" class="text-button" id="export" disabled>Download backup</button><button type="button" class="text-button" id="import-trigger" disabled>Restore a backup</button><input type="file" id="import" accept="application/json,.json" hidden disabled></div></footer>
+    <section class="access-management" id="access-management" hidden aria-labelledby="access-title">
+      <div class="section-heading"><div><h2 id="access-title">Who can edit</h2><p>Give someone access with the email they use for Google sign-in.</p></div></div>
+      <p class="access-owner"><strong id="primary-owner-email">lastazione10@gmail.com</strong><span>Owner · manages access</span></p>
+      <form id="grant-access-form" class="grant-access-form">
+        <label class="field" for="access-email"><span>Google account email</span><input id="access-email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="name@example.com" required aria-describedby="access-hint"></label>
+        <button type="submit" class="button primary" id="grant-access" disabled>Give access</button>
+      </form>
+      <p class="hint" id="access-hint">Editors can change the menu and photos. Only you can give or remove access. Share this page with them after adding their email.</p>
+      <p class="access-feedback" id="access-feedback" role="status" aria-live="polite">Loading access…</p>
+      <ul class="access-list" id="access-list" aria-label="People with editing access"></ul>
+      <button type="button" class="text-button" id="reload-access" hidden>Reload access list</button>
+    </section>
+    <footer class="workspace-footer"><p>Changes published here update the website and the QR menu.</p><div><button type="button" class="text-button" id="export" disabled>Download backup</button><button type="button" class="text-button" id="import-trigger" disabled>Restore a backup</button><input type="file" id="import" accept="application/json,.json" hidden disabled></div></footer>
+  </div>
   </main>
   <dialog id="discard-dialog"><form method="dialog"><h2>Discard this draft?</h2><p>Your unpublished edits will be replaced with the most recently published content. You can download a backup first.</p><div class="dialog-actions"><button class="button quiet" value="cancel">Keep editing</button><button class="button danger-fill" value="discard">Discard draft</button></div></form></dialog>
+  <dialog id="sign-out-dialog" aria-labelledby="sign-out-title"><form method="dialog"><h2 id="sign-out-title">Save your draft before leaving?</h2><p>Signing out removes your unpublished draft from this device. Download a backup to keep your edits. Your published website stays as it is.</p><button type="button" class="text-button" id="sign-out-backup">Download draft backup</button><div class="dialog-actions"><button class="button quiet" value="cancel">Keep editing</button><button class="button danger-fill" value="sign-out">Discard draft and sign out</button></div></form></dialog>
   <noscript><p class="message">JavaScript is needed to edit the menu. You can still <a href="/menu/">open the customer menu</a>.</p></noscript>
 </body>
 </html>
