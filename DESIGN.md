@@ -1,6 +1,10 @@
 # La Stazione redesign
 
-Reading this as a café website for local guests and visitors on phones, with the warmth of an Italian coffee bar and the real social life of Beit Chabab. Primary actions: explore the menu and get directions. Taste dials: variance 7, motion 5, density 3.
+Reading this as a café website for local guests and visitors on phones, with the warmth of an Italian coffee bar and the real social life of Beit Chabab. Primary actions: explore the menu and get directions. Taste dials: variance 7, motion 6, density 3.
+
+## User revision: original theme, fresher color, more life
+
+The user requested more animations, a modern palette closer to the original website, an embedded Google Map at the location, and exact title case “La Stazione.” These instructions supersede the original red-and-paper palette described in the historical concept assessment below. Preserve the recognizable supplied red logo, while restoring the original site's forest-green interface color and replacing yellowed cream with clean off-white and pale sage. Header and footer wordmarks must read “La Stazione.” The actual Google Maps iframe uses the verified location and sits next to hours and directions.
 
 ## Committed world: the café photo album
 
@@ -21,18 +25,18 @@ The familiar category hero is dark stock coffee photography with a centered prem
 
 ## Tokens
 
-- Paper #fff5df, warm surface #f5e6c8, red #b62b1d, dark ink #491d16, secondary ink #79554a, hairline rgba(73,29,22,.22).
+- Paper #f6f8f3, sage surface #e6ede5, forest accent #245747, deep green ink #19352b, secondary ink #52675a, hairline rgba(25,53,43,.22). The original raster logo retains its red drawing.
 - Fraunces variable display, 500–700, selected for friendly rounded terminals echoing the hand-drawn cup mark and familiar Italian café lettering; DM Sans for body and controls. Both self-hosted with OFL licenses. This is a brand-derived choice, not a neutral premium serif default.
-- Display 48–96px with -0.04em maximum negative tracking; section titles 40–68px; body 16–18px; utility 12–14px. Fluid max-width 1320px and mobile gutters 22px.
-- Paper, photo edges and red typography carry the identity. No fake grain, feature-card grid, metrics, testimonials, brand changes or fictional venue render.
+- Display 48–96px with -0.04em maximum negative tracking; section titles 40–68px; body 16–18px; utility 12–14px. Fluid max-width 1440px and mobile gutters 22px.
+- Light surfaces, photo edges and forest typography carry the identity. No fake grain, feature-card grid, metrics, testimonials, brand changes or fictional venue render.
 
 ## Composition and signature
 
-Red utility strip; quiet logo/navigation; asymmetric hero with large coffee-and-company headline and two offset genuine photographs. A small personal photo caption is the signature album detail. A red typographic band leads into a concise story, a complete searchable menu, a photographic gallery and a bold visit section. Mobile recomposes the hero to show heading and action before photos; the bottom bar provides menu and directions while browsing.
+Forest-green utility strip; quiet logo/navigation; asymmetric hero with large coffee-and-company headline and two offset genuine photographs. A small personal photo caption is the signature album detail. A moving green typographic ribbon leads into a concise story, a complete searchable menu, a photographic gallery and a green visit section with an interactive Google Map. Mobile recomposes the hero to show heading and action before photos; the bottom bar provides menu and directions while browsing.
 
 ## Interaction and motion
 
-GSAP hero photo placement and short type entrance (under one second); subtle desktop photo parallax through ScrollTrigger; quick tactile control feedback. Native scroll. Reduced motion disables movement. Content is visible without animation JS. Full-menu dialog protects focus for searching 103 entries without losing the landing-page position; gallery lightbox supports Escape and keyboard arrows. Links open the verified Maps, phone, WhatsApp and Instagram destinations.
+GSAP hero photo placement and short type entrance; an accessible moving coffee ribbon; authored photo and heading reveals; desktop fine-pointer photo depth; quick menu transitions for pointer use. Native scroll. A persistent motion-pause preference and OS reduced-motion setting disable spatial motion; loops pause when offscreen or the tab is hidden. Content remains visible without animation JS. Full-menu dialog protects focus for searching 103 entries without losing the landing-page position; gallery lightbox supports Escape and keyboard arrows. Links open the verified Maps, phone, WhatsApp and Instagram destinations. The embedded Google Map lazy-loads at the visit section and keeps its native pan, zoom, fullscreen and attribution controls.
 
 ## Scope
 

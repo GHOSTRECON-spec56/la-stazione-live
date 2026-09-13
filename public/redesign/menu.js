@@ -202,7 +202,7 @@
       dialog.showModal();
       scroller.scrollTop = 0;
       dialog.querySelector("[data-menu-close]").focus({ preventScroll: true });
-      if (openedWithPointer && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (openedWithPointer && document.documentElement.dataset.motionPaused !== "true" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         dialog.animate([{ opacity: 0, transform: "translateY(12px) scale(.985)" }, { opacity: 1, transform: "translateY(0) scale(1)" }], { duration: 240, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
       }
       openedWithPointer = false;
