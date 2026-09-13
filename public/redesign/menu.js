@@ -208,6 +208,13 @@
       openedWithPointer = false;
     }
 
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        dialog.close();
+      }
+    });
+
     dialog.addEventListener("close", () => {
       if (scrollSnapshot) {
         scrollSnapshot.styles.forEach(([name, value, priority]) => value ? document.body.style.setProperty(name, value, priority) : document.body.style.removeProperty(name));

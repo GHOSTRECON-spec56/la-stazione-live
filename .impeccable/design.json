@@ -276,7 +276,7 @@
       "name": "Full-menu item",
       "kind": "custom",
       "description": "Unboxed item row with aligned real price; actual dataset supplies names and prices.",
-      "html": "<article class=\"ds-menu-item\"><div class=\"ds-menu-heading\"><h4>Cappuccino</h4><span class=\"ds-menu-price\">$3.30</span></div></article>",
+      "html": "<article class=\"ds-menu-item\"><div class=\"ds-menu-heading\"><h4>Cappuccino</h4><span class=\"ds-menu-price\">$5.00</span></div></article>",
       "css": ".ds-menu-item{padding:18px 0;border-top:1px solid rgb(73 29 22 / 22%);max-width:420px;color:var(--ink,#491d16);font-family:'DM Sans',sans-serif}.ds-menu-heading{display:flex;align-items:baseline;justify-content:space-between;gap:18px}.ds-menu-heading h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.4}.ds-menu-price{flex-shrink:0;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.5}"
     }
   ],
