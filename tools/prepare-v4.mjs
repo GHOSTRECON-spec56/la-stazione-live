@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const seed=JSON.parse(fs.readFileSync('public/site-content/default.json','utf8'));
+const file='public/redesign_v4/index.html';
+let html=fs.readFileSync(file,'utf8');
+const tag=`<script>window.LaStazioneInitialPhotos=${JSON.stringify(seed.photos.hero).replaceAll('<','\\u003c')};</script>`;
+html=html.replace(/\s*<script>window.LaStazioneInitialPhotos=.*?<\/script>/,'');
+html=html.replace('  <script defer src="carousel.js"></script>',`  ${tag}\n  <script defer src="carousel.js"></script>`);
+fs.writeFileSync(file,html);
+const owner='public/owner/owner.js';fs.writeFileSync(owner,fs.readFileSync(owner,'utf8').trimEnd()+'\n');
+fs.writeFileSync('public/redesign_v4/README.md',`# La Stazione · version 4\n\nPreview: /redesign_v4/ · permanent menu: /menu/ · owner workspace: /owner/. Earlier versions and the original homepage are preserved.\n\nNative looping photo swipes retain the original tilted composition. The rotating menu section uses a separate original four-subject ink sheet. Animation lifecycle cleanup prevents faded entrance states on Safari return.\n\nThe permanent menu and this version share owner-managed content through /site-content/content.js and Netlify Functions/Blobs. All initial menu prices are preserved in /site-content/default.json. The owner editor provides draft recovery, publish, photo uploads, menu management and backups. Temporary owner editing intentionally has no sign-in yet.\n\nRun npm ci and npm run dev from the deployment repository, then open http://localhost:8888/redesign_v4/. See DESIGN-v4.md in the repository for storage and maintenance details.\n`);

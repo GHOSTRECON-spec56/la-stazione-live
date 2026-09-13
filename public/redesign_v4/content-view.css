@@ -1,0 +1,7 @@
+.menu-wheel .ink-art { background-image: none; }
+.menu-illustration[data-art-ready] .ink-art { background-image: url('art/menu-illustrations.webp'); }
+.art-matcha { background-position: 0 0; }
+.art-ibrik { background-position: 100% 0; }
+.art-sandwich { background-position: 0 100%; }
+.art-cake { background-position: 100% 100%; }
+.moments[hidden] { display: none; }

@@ -1,0 +1,88 @@
+/* Normal document scrolling keeps the QR menu comfortable in mobile Safari. */
+html:has([data-full-menu-page]) { scroll-behavior: auto; scroll-padding-top: 24px; }
+.menu-page-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(1180px, 100%); margin: auto; padding: 27px 40px; border-bottom: 1px solid var(--line); }
+.menu-home-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 13px; }
+.menu-home-link svg { width: 20px; height: 20px; }
+.menu-home-link:hover { text-decoration: underline; }
+.menu-page-main { width: min(1100px, 100%); margin: auto; padding: 57px 40px 64px; }
+.menu-page-intro { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding-bottom: 43px; }
+.menu-page-intro h1 { font-size: clamp(54px, 7vw, 84px); overflow-wrap: anywhere; }
+.menu-page-intro > p { max-width: 35ch; color: var(--muted); font-size: 14px; line-height: 1.7; white-space: pre-line; }
+.menu-page-controls { border-bottom: 1px solid var(--line); }
+.menu-page-controls .menu-search-row { margin-bottom: 23px; }
+.menu-page-controls .menu-search-wrap { max-width: 640px; }
+.menu-page-controls .menu-dialog-main { margin-left: -12px; margin-bottom: 16px; gap: 8px; }
+.menu-page-controls .menu-subcategories { gap: 27px; }
+.menu-page-results { padding-top: 28px; }
+.menu-page-results .menu-results-count { font-size: 12px; margin-bottom: 33px; }
+.menu-page-results .menu-result-group { margin-bottom: 43px; }
+.menu-page-results .menu-group-heading h2 { color: var(--ink); font-size: 32px; font-weight: 500; line-height: 1.2; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.menu-page-results .menu-result-list { column-gap: 52px; }
+.menu-page-results .menu-item { padding: 20px 0; }
+.menu-page-results .menu-item h3 { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: -.01em; line-height: 1.4; }
+.menu-page-results .menu-item-details, .menu-page-results .menu-item-options { max-width: 47ch; font-size: 13px; white-space: pre-line; overflow-wrap: anywhere; }
+.menu-page-results .menu-item-heading { gap: 20px; }
+.menu-page-results .menu-item-heading > h3 { min-width: 0; overflow-wrap: anywhere; }
+.menu-page-results .menu-item-prices { font-size: 14px; }
+.menu-page-results .menu-price-size { font-size: 12px; }
+.menu-page-results .menu-extras summary { font-size: 15px; }
+.menu-page-results .menu-extras-list > div, .menu-page-results .menu-extras-content > p { font-size: 13px; }
+.menu-page-results .menu-extras-list dt { overflow-wrap: anywhere; }
+.menu-page-results .menu-dialog-footnote { margin-top: 55px; font-size: 22px; }
+.menu-page-results .menu-empty h2 { font-size: 32px; }
+.menu-page-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 28px; width: min(1100px, 100%); margin: auto; padding: 25px 40px max(28px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.menu-page-footer a:hover { text-decoration: underline; }
+.menu-loading, .menu-unavailable { padding: 35px 0; color: var(--muted); font-size: 15px; }
+.menu-unavailable a { text-decoration: underline; }
+.menu-retry { padding: 4px; border: 0; background: transparent; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.menu-unavailable .menu-retry:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.menu-page-main #menu-app:focus { outline: none; }
+@media (max-width: 700px) {
+  .menu-page-header { padding: 22px 23px; }
+  .menu-page-header .brand img { width: 46px; height: 38px; }
+  .menu-page-header .brand > span { font-size: 26px; }
+  .menu-home-link { gap: 6px; font-size: 12px; }
+  .menu-page-main { padding: 35px 23px 46px; }
+  .menu-page-intro { display: block; padding-bottom: 31px; }
+  .menu-page-intro h1 { font-size: 61px; }
+  .menu-page-intro > p { margin-top: 16px; font-size: 13px; }
+  .menu-page-controls .menu-search-row { gap: 10px; margin-bottom: 19px; }
+  .menu-page-controls .menu-dialog-main { justify-content: flex-start; flex-wrap: wrap; gap: 3px; margin: 0 0 13px -9px; }
+  .menu-page-controls .menu-dialog-main .menu-filter { padding: 10px 12px; font-size: 13px; }
+  .menu-page-controls .menu-subcategories { gap: 24px; }
+  .menu-page-results { padding-top: 22px; }
+  .menu-page-results .menu-results-count { margin-bottom: 26px; }
+  .menu-page-results .menu-group-heading h2 { font-size: 29px; }
+  .menu-page-results .menu-result-group { margin-bottom: 35px; }
+  .menu-page-results .menu-item { padding: 19px 0; }
+  .menu-page-results .menu-item-heading { gap: 18px; }
+  .menu-page-results .menu-item h3 { font-size: 16px; }
+  .menu-page-results .menu-item-prices { font-size: 13px; }
+  .menu-page-results .menu-item-details { font-size: 13px; }
+  .menu-page-results .menu-dialog-footnote { font-size: 21px; margin-top: 40px; }
+  .menu-page-footer { padding-inline: 23px; justify-content: center; text-align: center; gap: 7px 22px; }
+}
+@media (max-width: 370px) {
+  .menu-page-header, .menu-page-main { padding-left: 18px; padding-right: 18px; }
+  .menu-page-header { gap: 12px; }
+  .menu-page-header .brand { gap: 8px; }
+  .menu-page-header .brand > span { font-size: 23px; }
+  .menu-page-header .brand img { width: 39px; height: 34px; }
+  .menu-page-header .brand small { font-size: 7px; }
+  .menu-home-link span { display: none; }
+  .menu-home-link { min-width: 44px; justify-content: center; }
+  .menu-page-controls .menu-dialog-main .menu-filter { padding-inline: 10px; }
+  .menu-page-controls .menu-search-row { flex-wrap: wrap; }
+  .menu-page-controls .menu-search-wrap { flex-basis: 100%; }
+  .menu-page-controls .menu-currency { margin-left: auto; }
+}
+@media print {
+  .skip-link, .menu-home-link, .menu-page-controls, .menu-results-count, .menu-extras-marker { display: none !important; }
+  .menu-page-header, .menu-page-main, .menu-page-footer { padding-inline: 0; }
+  .menu-page-main { padding-top: 30px; }
+  .menu-page-intro { padding-bottom: 30px; }
+  .menu-item { break-inside: avoid; }
+  .menu-group-heading { break-after: avoid; }
+  .menu-page-footer { font-size: 10pt; }
+  .menu-page-results .menu-result-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

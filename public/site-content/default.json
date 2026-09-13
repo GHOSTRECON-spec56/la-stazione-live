@@ -1,0 +1,2367 @@
+{
+  "schemaVersion": 1,
+  "menu": {
+    "title": "The menu.",
+    "intro": "Your usual, or something new. Made for good company.",
+    "groups": [
+      {
+        "id": "coffee",
+        "label": "Coffee"
+      },
+      {
+        "id": "tea",
+        "label": "Tea"
+      },
+      {
+        "id": "food",
+        "label": "Food"
+      },
+      {
+        "id": "beverages",
+        "label": "Beverages"
+      }
+    ],
+    "categories": [
+      {
+        "id": "food-croissant-small",
+        "label": "Small croissants",
+        "groupId": "food",
+        "order": 0
+      },
+      {
+        "id": "drink-tea-served-in-a-teapot",
+        "label": "Tea, served in a teapot",
+        "groupId": "tea",
+        "order": 1
+      },
+      {
+        "id": "food-croissant-regular",
+        "label": "Regular croissants",
+        "groupId": "food",
+        "order": 2
+      },
+      {
+        "id": "drink-iced-tea",
+        "label": "Iced Tea",
+        "groupId": "tea",
+        "order": 3
+      },
+      {
+        "id": "drink-matcha",
+        "label": "Matcha",
+        "groupId": "tea",
+        "order": 4
+      },
+      {
+        "id": "food-bowls",
+        "label": "Bowls",
+        "groupId": "food",
+        "order": 5
+      },
+      {
+        "id": "drink-iced-matcha",
+        "label": "Iced Matcha",
+        "groupId": "tea",
+        "order": 6
+      },
+      {
+        "id": "food-salads",
+        "label": "Salads",
+        "groupId": "food",
+        "order": 7
+      },
+      {
+        "id": "drink-hot-coffee",
+        "label": "Hot Coffee",
+        "groupId": "coffee",
+        "order": 8
+      },
+      {
+        "id": "food-sandwiches",
+        "label": "Sandwiches",
+        "groupId": "food",
+        "order": 9
+      },
+      {
+        "id": "food-baguette",
+        "label": "Baguette",
+        "groupId": "food",
+        "order": 10
+      },
+      {
+        "id": "food-dessert",
+        "label": "Dessert",
+        "groupId": "food",
+        "order": 11
+      },
+      {
+        "id": "drink-cold-coffee",
+        "label": "Cold Coffee",
+        "groupId": "coffee",
+        "order": 12
+      },
+      {
+        "id": "drink-specialty-drinks",
+        "label": "Specialty drinks",
+        "groupId": "coffee",
+        "order": 13
+      },
+      {
+        "id": "drink-fresh-smoothies",
+        "label": "Fresh Smoothies",
+        "groupId": "beverages",
+        "order": 14
+      },
+      {
+        "id": "drink-beverages",
+        "label": "Beverages",
+        "groupId": "beverages",
+        "order": 15
+      }
+    ],
+    "items": [
+      {
+        "id": "item-001",
+        "categoryId": "food-croissant-small",
+        "name": "almonds",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 150000,
+            "usd": 1.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 0
+      },
+      {
+        "id": "item-002",
+        "categoryId": "drink-tea-served-in-a-teapot",
+        "name": "Lemongrass & Ginger Twist",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 1
+      },
+      {
+        "id": "item-003",
+        "categoryId": "food-croissant-small",
+        "name": "chocolat",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 150000,
+            "usd": 1.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 2
+      },
+      {
+        "id": "item-004",
+        "categoryId": "drink-tea-served-in-a-teapot",
+        "name": "Chamomile",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 3
+      },
+      {
+        "id": "item-005",
+        "categoryId": "food-croissant-small",
+        "name": "plain",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 150000,
+            "usd": 1.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 4
+      },
+      {
+        "id": "item-006",
+        "categoryId": "drink-tea-served-in-a-teapot",
+        "name": "Earl Grey",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 5
+      },
+      {
+        "id": "item-007",
+        "categoryId": "food-croissant-small",
+        "name": "cheese",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 150000,
+            "usd": 1.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 6
+      },
+      {
+        "id": "item-008",
+        "categoryId": "drink-tea-served-in-a-teapot",
+        "name": "English Breakfast",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 7
+      },
+      {
+        "id": "item-009",
+        "categoryId": "food-croissant-small",
+        "name": "zaatar",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 150000,
+            "usd": 1.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 8
+      },
+      {
+        "id": "item-010",
+        "categoryId": "drink-tea-served-in-a-teapot",
+        "name": "Jasmine Tea",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 9
+      },
+      {
+        "id": "item-011",
+        "categoryId": "drink-tea-served-in-a-teapot",
+        "name": "Café Blanc",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 10
+      },
+      {
+        "id": "item-012",
+        "categoryId": "food-croissant-regular",
+        "name": "almond",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 11
+      },
+      {
+        "id": "item-013",
+        "categoryId": "food-croissant-regular",
+        "name": "chocolat",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 12
+      },
+      {
+        "id": "item-014",
+        "categoryId": "drink-iced-tea",
+        "name": "Lemon",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 13
+      },
+      {
+        "id": "item-015",
+        "categoryId": "food-croissant-regular",
+        "name": "plain",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 14
+      },
+      {
+        "id": "item-016",
+        "categoryId": "drink-iced-tea",
+        "name": "Peach",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 15
+      },
+      {
+        "id": "item-017",
+        "categoryId": "food-croissant-regular",
+        "name": "cheese",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 16
+      },
+      {
+        "id": "item-018",
+        "categoryId": "drink-iced-tea",
+        "name": "Mango",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 17
+      },
+      {
+        "id": "item-019",
+        "categoryId": "food-croissant-regular",
+        "name": "zaatar",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 18
+      },
+      {
+        "id": "item-020",
+        "categoryId": "drink-iced-tea",
+        "name": "Rasberry",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 19
+      },
+      {
+        "id": "item-021",
+        "categoryId": "food-croissant-regular",
+        "name": "Turkey & cheese",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 20
+      },
+      {
+        "id": "item-022",
+        "categoryId": "food-croissant-regular",
+        "name": "Halloumi zaatar olive",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 450000,
+            "usd": 5
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 21
+      },
+      {
+        "id": "item-023",
+        "categoryId": "drink-matcha",
+        "name": "Matcha latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 22
+      },
+      {
+        "id": "item-024",
+        "categoryId": "food-croissant-regular",
+        "name": "cinamon rolls",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 23
+      },
+      {
+        "id": "item-025",
+        "categoryId": "drink-matcha",
+        "name": "Strawberry matcha Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "Large",
+            "lbp": 800000,
+            "usd": 8.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 24
+      },
+      {
+        "id": "item-026",
+        "categoryId": "food-croissant-regular",
+        "name": "rolls chocolat",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 25
+      },
+      {
+        "id": "item-027",
+        "categoryId": "drink-matcha",
+        "name": "Blueberries Matcha latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "Large",
+            "lbp": 800000,
+            "usd": 8.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 26
+      },
+      {
+        "id": "item-028",
+        "categoryId": "food-croissant-regular",
+        "name": "rolls raisin",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 27
+      },
+      {
+        "id": "item-029",
+        "categoryId": "drink-matcha",
+        "name": "Vanilla Matcha Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "Large",
+            "lbp": 800000,
+            "usd": 8.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 28
+      },
+      {
+        "id": "item-030",
+        "categoryId": "food-bowls",
+        "name": "Greek yogurt plain/strawberry/blueberry",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 200000,
+            "usd": 2.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 29
+      },
+      {
+        "id": "item-031",
+        "categoryId": "drink-iced-matcha",
+        "name": "Matcha latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 30
+      },
+      {
+        "id": "item-032",
+        "categoryId": "food-bowls",
+        "name": "Greek yogurt Vanilla",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 31
+      },
+      {
+        "id": "item-033",
+        "categoryId": "drink-iced-matcha",
+        "name": "Strawberry matcha Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "Large",
+            "lbp": 800000,
+            "usd": 8.9
+          },
+          {
+            "label": "XL",
+            "lbp": 850000,
+            "usd": 9.4
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 32
+      },
+      {
+        "id": "item-034",
+        "categoryId": "food-bowls",
+        "name": "bowls",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 400000,
+            "usd": 4.4
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 33
+      },
+      {
+        "id": "item-035",
+        "categoryId": "drink-iced-matcha",
+        "name": "Blueberries Matcha latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "Large",
+            "lbp": 800000,
+            "usd": 8.9
+          },
+          {
+            "label": "XL",
+            "lbp": 850000,
+            "usd": 9.4
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 34
+      },
+      {
+        "id": "item-036",
+        "categoryId": "food-bowls",
+        "name": "Greek yogurt of chocie with Frozen fruits",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 35
+      },
+      {
+        "id": "item-037",
+        "categoryId": "drink-iced-matcha",
+        "name": "Vanilla Matcha Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "Large",
+            "lbp": 800000,
+            "usd": 8.9
+          },
+          {
+            "label": "XL",
+            "lbp": 850000,
+            "usd": 9.4
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 36
+      },
+      {
+        "id": "item-038",
+        "categoryId": "drink-iced-matcha",
+        "name": "Matcha Frappuccino",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 37
+      },
+      {
+        "id": "item-039",
+        "categoryId": "food-salads",
+        "name": "Chicken Ceaser",
+        "details": "lettuce, parmesan cheese, grilled chicken, ceaser dressing",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 800000,
+            "usd": 8.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 38
+      },
+      {
+        "id": "item-040",
+        "categoryId": "food-salads",
+        "name": "Crab Salad",
+        "details": "lettuce, shreded carrot, corn, Crab, honey mustard",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 800000,
+            "usd": 8.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 39
+      },
+      {
+        "id": "item-041",
+        "categoryId": "drink-hot-coffee",
+        "name": "Lebanese coffee  (Served in a coffee pot)",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "XL",
+            "lbp": 800000,
+            "usd": 8.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 40
+      },
+      {
+        "id": "item-042",
+        "categoryId": "food-salads",
+        "name": "Quinoa Kale",
+        "details": "quinoa, kale, dried cramberries, nuts, balsamic dressing",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 850000,
+            "usd": 9.4
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 41
+      },
+      {
+        "id": "item-043",
+        "categoryId": "drink-hot-coffee",
+        "name": "Espresso",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 42
+      },
+      {
+        "id": "item-044",
+        "categoryId": "food-salads",
+        "name": "House Salad",
+        "details": "lettuce tomato cucomber fetta chees",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 43
+      },
+      {
+        "id": "item-045",
+        "categoryId": "drink-hot-coffee",
+        "name": "Double espresso",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 44
+      },
+      {
+        "id": "item-046",
+        "categoryId": "drink-hot-coffee",
+        "name": "Americano",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "Large",
+            "lbp": 400000,
+            "usd": 4.4
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 45
+      },
+      {
+        "id": "item-047",
+        "categoryId": "food-sandwiches",
+        "name": "Labneh",
+        "details": "labneh, olive, cucumber, olive oil",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 400000,
+            "usd": 4.4
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 46
+      },
+      {
+        "id": "item-048",
+        "categoryId": "drink-hot-coffee",
+        "name": "French Press (Served in a french press pot)",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 250000,
+            "usd": 2.8
+          },
+          {
+            "label": "Large",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "XL",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 47
+      },
+      {
+        "id": "item-049",
+        "categoryId": "food-sandwiches",
+        "name": "halloumi Pesto",
+        "details": "lettuce, halloum, olives, cherry tomatos, pesto sauce",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 48
+      },
+      {
+        "id": "item-050",
+        "categoryId": "drink-hot-coffee",
+        "name": "Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "Large",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 49
+      },
+      {
+        "id": "item-051",
+        "categoryId": "food-sandwiches",
+        "name": "Sallami",
+        "details": "sallami, lettuce, pickels, mayo and honey mustard",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 50
+      },
+      {
+        "id": "item-052",
+        "categoryId": "drink-hot-coffee",
+        "name": "Cappuccino",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 450000,
+            "usd": 5
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 51
+      },
+      {
+        "id": "item-053",
+        "categoryId": "food-sandwiches",
+        "name": "Turkey & cheese",
+        "details": "turkey, cheese, pickels, honey mustard sauce",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 52
+      },
+      {
+        "id": "item-054",
+        "categoryId": "drink-hot-coffee",
+        "name": "Flat white",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 450000,
+            "usd": 5
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 53
+      },
+      {
+        "id": "item-055",
+        "categoryId": "food-sandwiches",
+        "name": "Chicken Avocado",
+        "details": "Chicken, avocado, arigula, onion slices, special mayo",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 900000,
+            "usd": 10
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 54
+      },
+      {
+        "id": "item-056",
+        "categoryId": "drink-hot-coffee",
+        "name": "Vanilla Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 55
+      },
+      {
+        "id": "item-057",
+        "categoryId": "drink-hot-coffee",
+        "name": "Caramel Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 56
+      },
+      {
+        "id": "item-058",
+        "categoryId": "food-baguette",
+        "name": "Baguette White",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 180000,
+            "usd": 2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 57
+      },
+      {
+        "id": "item-059",
+        "categoryId": "drink-hot-coffee",
+        "name": "Speculos Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 58
+      },
+      {
+        "id": "item-060",
+        "categoryId": "food-baguette",
+        "name": "Baguette Cereal",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 280000,
+            "usd": 3.1
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 59
+      },
+      {
+        "id": "item-061",
+        "categoryId": "drink-hot-coffee",
+        "name": "Amaretto Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 60
+      },
+      {
+        "id": "item-062",
+        "categoryId": "drink-hot-coffee",
+        "name": "Irish Cream Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 61
+      },
+      {
+        "id": "item-063",
+        "categoryId": "food-dessert",
+        "name": "Chocolate Fondant",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 400000,
+            "usd": 4.4
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 62
+      },
+      {
+        "id": "item-064",
+        "categoryId": "drink-hot-coffee",
+        "name": "Chocolate Noisette Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 600000,
+            "usd": 6.7
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 63
+      },
+      {
+        "id": "item-065",
+        "categoryId": "food-dessert",
+        "name": "Waffle mixed berries/Lotus/Chocolate",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 64
+      },
+      {
+        "id": "item-066",
+        "categoryId": "drink-hot-coffee",
+        "name": "Mocha",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 550000,
+            "usd": 6.1
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 65
+      },
+      {
+        "id": "item-067",
+        "categoryId": "food-dessert",
+        "name": "Cookies",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 300000,
+            "usd": 3.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 66
+      },
+      {
+        "id": "item-068",
+        "categoryId": "drink-hot-coffee",
+        "name": "White Mocha",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 550000,
+            "usd": 6.1
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 67
+      },
+      {
+        "id": "item-069",
+        "categoryId": "food-dessert",
+        "name": "Macaron",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Price",
+            "lbp": 100000,
+            "usd": 1.1
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 68
+      },
+      {
+        "id": "item-070",
+        "categoryId": "drink-cold-coffee",
+        "name": "Iced Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "Large",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "XL",
+            "lbp": 550000,
+            "usd": 6.1
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 69
+      },
+      {
+        "id": "item-071",
+        "categoryId": "drink-cold-coffee",
+        "name": "Vanilla Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 70
+      },
+      {
+        "id": "item-072",
+        "categoryId": "drink-cold-coffee",
+        "name": "Caramel Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 71
+      },
+      {
+        "id": "item-073",
+        "categoryId": "drink-cold-coffee",
+        "name": "Speculos Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 72
+      },
+      {
+        "id": "item-074",
+        "categoryId": "drink-cold-coffee",
+        "name": "Amaretto Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 73
+      },
+      {
+        "id": "item-075",
+        "categoryId": "drink-cold-coffee",
+        "name": "Irish Cream Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 74
+      },
+      {
+        "id": "item-076",
+        "categoryId": "drink-cold-coffee",
+        "name": "Chocolate Noisette Latte",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 75
+      },
+      {
+        "id": "item-077",
+        "categoryId": "drink-cold-coffee",
+        "name": "Frappuccino",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "Large",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "XL",
+            "lbp": 550000,
+            "usd": 6.1
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 76
+      },
+      {
+        "id": "item-078",
+        "categoryId": "drink-cold-coffee",
+        "name": "Chocolate Frappuccino",
+        "details": "with whip cream",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 77
+      },
+      {
+        "id": "item-079",
+        "categoryId": "drink-cold-coffee",
+        "name": "Cookies and Cream Frappuccino",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 78
+      },
+      {
+        "id": "item-080",
+        "categoryId": "drink-cold-coffee",
+        "name": "Caramel Frappuccino",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          },
+          {
+            "label": "Large",
+            "lbp": 650000,
+            "usd": 7.2
+          },
+          {
+            "label": "XL",
+            "lbp": 700000,
+            "usd": 7.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 79
+      },
+      {
+        "id": "item-081",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Cappuccino Fredo",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 80
+      },
+      {
+        "id": "item-082",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Cortado",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 450000,
+            "usd": 5
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 81
+      },
+      {
+        "id": "item-083",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Pumpkin spice",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 450000,
+            "usd": 5
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 82
+      },
+      {
+        "id": "item-084",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Espresso tonic",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 350000,
+            "usd": 3.9
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 83
+      },
+      {
+        "id": "item-085",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Marocchino",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 450000,
+            "usd": 5
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 84
+      },
+      {
+        "id": "item-086",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Affogato",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 85
+      },
+      {
+        "id": "item-087",
+        "categoryId": "drink-specialty-drinks",
+        "name": "Hot Chocolate",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 400000,
+            "usd": 4.4
+          },
+          {
+            "label": "Large",
+            "lbp": 500000,
+            "usd": 5.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 86
+      },
+      {
+        "id": "item-088",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "Berries",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 87
+      },
+      {
+        "id": "item-089",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "mango",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 88
+      },
+      {
+        "id": "item-090",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "beetroot",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 89
+      },
+      {
+        "id": "item-091",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "melon",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 90
+      },
+      {
+        "id": "item-092",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "Strawberry & Avocado",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 91
+      },
+      {
+        "id": "item-093",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "Strawberry",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 92
+      },
+      {
+        "id": "item-094",
+        "categoryId": "drink-fresh-smoothies",
+        "name": "Tropical",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 600000,
+            "usd": 6.7
+          },
+          {
+            "label": "Large",
+            "lbp": 700000,
+            "usd": 7.8
+          },
+          {
+            "label": "XL",
+            "lbp": 750000,
+            "usd": 8.3
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 93
+      },
+      {
+        "id": "item-095",
+        "categoryId": "drink-beverages",
+        "name": "Water",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 50000,
+            "usd": 0.6
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 94
+      },
+      {
+        "id": "item-096",
+        "categoryId": "drink-beverages",
+        "name": "Rim Sparkling water",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 100000,
+            "usd": 1.1
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 95
+      },
+      {
+        "id": "item-097",
+        "categoryId": "drink-beverages",
+        "name": "Perrier Sparkling water",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 200000,
+            "usd": 2.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 96
+      },
+      {
+        "id": "item-098",
+        "categoryId": "drink-beverages",
+        "name": "Coca-Cola",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 200000,
+            "usd": 2.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 97
+      },
+      {
+        "id": "item-099",
+        "categoryId": "drink-beverages",
+        "name": "Coca-Cola Diet",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 200000,
+            "usd": 2.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 98
+      },
+      {
+        "id": "item-100",
+        "categoryId": "drink-beverages",
+        "name": "Fresh Orange juice",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 200000,
+            "usd": 2.2
+          }
+        ],
+        "available": true,
+        "featured": true,
+        "order": 99
+      },
+      {
+        "id": "item-101",
+        "categoryId": "drink-beverages",
+        "name": "Fresh Mawardi juice",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 200000,
+            "usd": 2.2
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 100
+      },
+      {
+        "id": "item-102",
+        "categoryId": "drink-beverages",
+        "name": "Fresh Pomegranate juice",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 250000,
+            "usd": 2.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 101
+      },
+      {
+        "id": "item-103",
+        "categoryId": "drink-beverages",
+        "name": "Fresh Afandi juice",
+        "details": "",
+        "options": [],
+        "prices": [
+          {
+            "label": "Regular",
+            "lbp": 250000,
+            "usd": 2.8
+          }
+        ],
+        "available": true,
+        "featured": false,
+        "order": 102
+      }
+    ],
+    "extras": [
+      {
+        "id": "coffee-extras",
+        "label": "Make it your coffee",
+        "groupId": "coffee",
+        "items": [
+          {
+            "id": "coffee-extra-0",
+            "name": "Lactose-free milk",
+            "lbp": 50000,
+            "usd": 0.55
+          },
+          {
+            "id": "coffee-extra-1",
+            "name": "Half-skimmed milk",
+            "lbp": 50000,
+            "usd": 0.55
+          },
+          {
+            "id": "coffee-extra-2",
+            "name": "Skimmed milk",
+            "lbp": 0,
+            "usd": 0
+          },
+          {
+            "id": "coffee-extra-3",
+            "name": "Almond milk",
+            "lbp": 100000,
+            "usd": 1.1
+          },
+          {
+            "id": "coffee-extra-4",
+            "name": "Oat milk",
+            "lbp": 200000,
+            "usd": 2.2
+          },
+          {
+            "id": "coffee-extra-5",
+            "name": "Flavor",
+            "lbp": 100000,
+            "usd": 1.1
+          },
+          {
+            "id": "coffee-extra-6",
+            "name": "Extra shot",
+            "lbp": 50000,
+            "usd": 0.55
+          },
+          {
+            "id": "coffee-extra-7",
+            "name": "Decaf shot",
+            "lbp": 100000,
+            "usd": 1.1
+          },
+          {
+            "id": "coffee-extra-8",
+            "name": "Whipped cream",
+            "lbp": 50000,
+            "usd": 0.55
+          }
+        ]
+      },
+      {
+        "id": "bread-extras",
+        "label": "Your choice of bread",
+        "groupId": "food",
+        "items": [
+          {
+            "id": "bread-extra-0",
+            "name": "Baguette white",
+            "lbp": 0,
+            "usd": 0
+          },
+          {
+            "id": "bread-extra-1",
+            "name": "Baguette cereal",
+            "lbp": 100000,
+            "usd": 1.1
+          },
+          {
+            "id": "bread-extra-2",
+            "name": "Ciabatta",
+            "lbp": 200000,
+            "usd": 2.2
+          },
+          {
+            "id": "bread-extra-3",
+            "name": "Pain demi",
+            "lbp": 0,
+            "usd": 0
+          }
+        ]
+      }
+    ]
+  },
+  "photos": {
+    "hero": [
+      {
+        "id": "photo-07",
+        "url": "/redesign_v4/photos/gallery-07-1000.webp",
+        "caption": "Your usual, made with love.",
+        "alt": "Fresh cappuccino at La Stazione"
+      },
+      {
+        "id": "photo-16",
+        "url": "/redesign_v4/photos/gallery-16-1000.webp",
+        "caption": "One more game?",
+        "alt": "Coffee and a game of chess at La Stazione"
+      },
+      {
+        "id": "photo-08",
+        "url": "/redesign_v4/photos/gallery-08-1000.webp",
+        "caption": "Just one more bite.",
+        "alt": "Fresh chocolate pastry on a café plate"
+      },
+      {
+        "id": "photo-15",
+        "url": "/redesign_v4/photos/gallery-15-1000.webp",
+        "caption": "A seat with a view.",
+        "alt": "Colorful smoothies overlooking the coast and mountains"
+      },
+      {
+        "id": "photo-20",
+        "url": "/redesign_v4/photos/gallery-20-1000.webp",
+        "caption": "Lunch, at your own pace.",
+        "alt": "Fresh sandwich at La Stazione"
+      },
+      {
+        "id": "photo-09",
+        "url": "/redesign_v4/photos/gallery-09-1000.webp",
+        "caption": "A moment to yourself.",
+        "alt": "A freshly prepared drink at La Stazione"
+      },
+      {
+        "id": "photo-17",
+        "url": "/redesign_v4/photos/gallery-17-1000.webp",
+        "caption": "A seat with a view.",
+        "alt": "Coffee on the terrace in the evening sun"
+      }
+    ],
+    "moments": [
+      {
+        "id": "photo-15",
+        "url": "/redesign_v4/photos/gallery-15-1000.webp",
+        "caption": "A seat with a view.",
+        "alt": "Colorful smoothies overlooking the coast and mountains"
+      },
+      {
+        "id": "photo-08",
+        "url": "/redesign_v4/photos/gallery-08-1000.webp",
+        "caption": "Just one more bite.",
+        "alt": "Fresh chocolate pastry on a café plate"
+      },
+      {
+        "id": "photo-16",
+        "url": "/redesign_v4/photos/gallery-16-1000.webp",
+        "caption": "One more game?",
+        "alt": "Coffee and a game of chess at La Stazione"
+      },
+      {
+        "id": "photo-20",
+        "url": "/redesign_v4/photos/gallery-20-1000.webp",
+        "caption": "Lunch, at your own pace.",
+        "alt": "Fresh sandwich at La Stazione"
+      }
+    ]
+  }
+}

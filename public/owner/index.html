@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#245747">
+  <title>Owner workspace · La Stazione</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="owner.css">
+  <script src="/site-content/content.js" defer></script>
+  <script src="owner.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to editor</a>
+  <header class="owner-header">
+    <a class="brand" href="/redesign_v4/"><img src="/brand-logo.jpg" width="48" height="44" alt=""><span>La Stazione<small>Owner workspace</small></span></a>
+    <nav aria-label="Website links"><a href="/redesign_v4/" target="_blank" rel="noopener">View website</a><a href="/menu/" target="_blank" rel="noopener">View menu</a><a href="/menu/qr.svg" download="La-Stazione-menu-QR.svg">Download menu QR</a></nav>
+  </header>
+  <main class="workspace" id="workspace">
+    <section class="workspace-heading"><div><h1>A little care, every day.</h1><p>Keep your menu and the moments from La Stazione up to date.</p></div><p class="access-note">Temporary owner access is open. Company email sign-in will be added later.</p></section>
+    <div class="save-bar"><div class="save-state"><span class="state-dot" id="state-dot"></span><div><strong id="save-state">Loading your menu…</strong><span id="save-detail">Your changes stay in a draft until you publish.</span></div></div><div class="save-actions"><button type="button" class="button quiet" id="undo" disabled>Undo last action</button><button type="button" class="button quiet" id="discard" disabled>Discard draft</button><button type="button" class="button primary" id="publish" disabled>Publish changes</button></div></div>
+    <div class="message" id="message" role="status" aria-live="polite" hidden></div>
+    <nav class="workspace-tabs" aria-label="Editing sections"><button type="button" data-tab="items" aria-current="page">Menu items <span id="item-count"></span></button><button type="button" data-tab="structure">Categories &amp; headings</button><button type="button" data-tab="extras">Extras</button><button type="button" data-tab="photos">Photos</button></nav>
+    <div id="editor" aria-busy="true"><div class="loading-state"><span class="loading-line"></span><span class="loading-line"></span><span class="loading-line short"></span><p>Opening your workspace…</p></div></div>
+    <footer class="workspace-footer"><p>Changes published here update the QR menu and the latest website. Previous design versions stay as they were.</p><div><button type="button" class="text-button" id="export" disabled>Download backup</button><button type="button" class="text-button" id="import-trigger" disabled>Restore a backup</button><input type="file" id="import" accept="application/json,.json" hidden disabled></div></footer>
+  </main>
+  <dialog id="discard-dialog"><form method="dialog"><h2>Discard this draft?</h2><p>Your unpublished edits will be replaced with the most recently published content. You can download a backup first.</p><div class="dialog-actions"><button class="button quiet" value="cancel">Keep editing</button><button class="button danger-fill" value="discard">Discard draft</button></div></form></dialog>
+  <noscript><p class="message">JavaScript is needed to edit the menu. You can still <a href="/menu/">open the customer menu</a>.</p></noscript>
+</body>
+</html>
