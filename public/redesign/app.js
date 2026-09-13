@@ -169,6 +169,13 @@
   let disposeLazyScenes = () => {};
   let scrollScenesReady = false;
   let refreshFrame = 0;
+  let stoppingScenes = false;
+  const motionStyles = new Map();
+  const rememberStyles = elements => elements.forEach(element => {
+    if (!motionStyles.has(element)) motionStyles.set(element, ['transform', 'opacity'].map(property => [
+      property, element.style.getPropertyValue(property), element.style.getPropertyPriority(property)
+    ]));
+  });
   function scheduleRefresh() {
     if (!scrollScenesReady || !canAnimate() || !window.ScrollTrigger || refreshFrame) return;
     refreshFrame = requestAnimationFrame(() => {
@@ -177,6 +184,7 @@
     });
   }
   const stopScenes = () => {
+    stoppingScenes = true;
     disposeLazyScenes();
     disposeLazyScenes = () => {};
     scrollScenesReady = false;
@@ -188,8 +196,14 @@
     disposeDepth = () => {};
     sceneContext?.revert();
     sceneContext = null;
+    motionStyles.forEach((properties, element) => properties.forEach(([property, value, priority]) => {
+      if (value) element.style.setProperty(property, value, priority);
+      else element.style.removeProperty(property);
+    }));
+    motionStyles.clear();
     activeUI.forEach(animation => animation.cancel());
     activeUI.clear();
+    stoppingScenes = false;
   };
 
   // A damped spring gives the photographs gentle depth, with no scroll hijack.
@@ -244,6 +258,7 @@
     sceneContext = gsap.context(context => {
       if (!heroPlayed && window.scrollY < window.innerHeight) {
         heroPlayed = true;
+        rememberStyles(document.querySelectorAll('.hero h1 > *, .hero-copy > p, .hero-actions, .hero-footnote, .photo-main, .photo-small, .album-stamp'));
         gsap.timeline({ defaults: { ease: 'power3.out', clearProps: 'transform,opacity' } })
           .from('.hero h1 > *', { y: 28, opacity: .4, duration: .8, stagger: .075 }, 0)
           .from('.hero-copy > p, .hero-actions, .hero-footnote', { y: 16, opacity: .5, duration: .65, stagger: .07 }, .16)
@@ -260,39 +275,45 @@
           const reveal = (trigger, targets, distance = 22) => {
             const elements = [...targets].filter(element => element && !seen.has(element));
             if (!elements.length || !trigger) return;
-            const timeline = gsap.timeline({ paused: true }).fromTo(elements,
-              { y: distance, opacity: .3 },
-              { y: 0, opacity: 1, duration: .7, stagger: .065, ease: 'power3.out', immediateRender: false, clearProps: 'transform,opacity' }
-            );
             ScrollTrigger.create({
               trigger, start: 'top 96%', once: true,
               onEnter: () => {
+                // Reverting ScrollTrigger can fire callbacks. It must never mark
+                // unseen sections as played or instantiate a new starting state.
+                if (stoppingScenes || !canAnimate()) return;
                 elements.forEach(element => seen.add(element));
-                if (root.dataset.input === 'keyboard') timeline.progress(1);
-                else timeline.play(0);
+                if (root.dataset.input === 'keyboard') return;
+                rememberStyles(elements);
+                // Construct the tween only on entrance; dormant sections have
+                // no paused from-state that can leak into pause/resume cleanup.
+                context.add(() => gsap.fromTo(elements, { y: distance, opacity: .3 }, {
+                  y: 0, opacity: 1, duration: .7, stagger: .065, ease: 'power3.out', clearProps: 'transform,opacity'
+                }));
               }
-        });
-      };
-      reveal(document.querySelector('.welcome'), document.querySelectorAll('.welcome-heading, .welcome-copy > *'));
-      document.querySelectorAll('.section-heading').forEach(heading => reveal(heading, heading.children));
-      if (window.matchMedia('(min-width: 851px)').matches) reveal(document.querySelector('.menu-photo'), document.querySelectorAll('.menu-photo'), 30);
-      reveal(document.querySelector('.partners'), document.querySelectorAll('.partners > *'), 12);
-      reveal(document.querySelector('.visit-copy'), document.querySelectorAll('.visit-copy > *'));
-      reveal(document.querySelector('.visit-map'), document.querySelectorAll('.visit-map'), 28);
-      reveal(document.querySelector('.footer-top'), document.querySelectorAll('.footer-top > *'), 16);
-      reveal(document.querySelector('.footer-wordmark'), document.querySelectorAll('.footer-wordmark'), 24);
+            });
+          };
+          reveal(document.querySelector('.welcome'), document.querySelectorAll('.welcome-heading, .welcome-copy > *'));
+          document.querySelectorAll('.section-heading').forEach(heading => reveal(heading, heading.children));
+          if (window.matchMedia('(min-width: 851px)').matches) reveal(document.querySelector('.menu-photo'), document.querySelectorAll('.menu-photo'), 30);
+          reveal(document.querySelector('.partners'), document.querySelectorAll('.partners > *'), 12);
+          reveal(document.querySelector('.visit-copy'), document.querySelectorAll('.visit-copy > *'));
+          reveal(document.querySelector('.visit-map'), document.querySelectorAll('.visit-map'), 28);
+          reveal(document.querySelector('.footer-top'), document.querySelectorAll('.footer-top > *'), 16);
+          reveal(document.querySelector('.footer-wordmark'), document.querySelectorAll('.footer-wordmark'), 24);
 
-      // Observe each photo against the viewport, including horizontal clipping.
-      // Offscreen gallery photos keep their first entrance until actually seen.
-      galleryObserver = new IntersectionObserver(entries => {
-        const entering = entries.filter(entry => entry.isIntersecting && !seen.has(entry.target)).map(entry => entry.target);
-        entering.forEach(element => { seen.add(element); galleryObserver.unobserve(element); });
-        if (!entering.length || root.dataset.input === 'keyboard') return;
-        context.add(() => gsap.fromTo(entering, { y: 26, opacity: .35 }, {
-          y: 0, opacity: 1, duration: .75, stagger: .065, ease: 'power3.out', clearProps: 'transform,opacity'
-        }));
-      }, { threshold: .12 });
-      moments.forEach(moment => { if (!seen.has(moment)) galleryObserver.observe(moment); });
+          // Observe each photo against the viewport, including horizontal clipping.
+          // Offscreen gallery photos keep their first entrance until actually seen.
+          galleryObserver = new IntersectionObserver(entries => {
+            if (stoppingScenes || !canAnimate() || !galleryObserver) return;
+            const entering = entries.filter(entry => entry.isIntersecting && !seen.has(entry.target)).map(entry => entry.target);
+            entering.forEach(element => { seen.add(element); galleryObserver.unobserve(element); });
+            if (!entering.length || root.dataset.input === 'keyboard') return;
+            rememberStyles(entering);
+            context.add(() => gsap.fromTo(entering, { y: 26, opacity: .35 }, {
+              y: 0, opacity: 1, duration: .75, stagger: .065, ease: 'power3.out', clearProps: 'transform,opacity'
+            }));
+          }, { threshold: .12 });
+          moments.forEach(moment => { if (!seen.has(moment)) galleryObserver.observe(moment); });
         });
       };
       // The rest of the page is visible by default. Prepare its motion only when
