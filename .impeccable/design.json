@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T05:27:23.423Z",
+  "title": "Design System: La Stazione redesign",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm paper",
+        "canonical": "#fff5df",
+        "tonalRamp": [
+          "oklch(15% 0.0308 86.46)",
+          "oklch(26.43% 0.0308 86.46)",
+          "oklch(37.86% 0.0308 86.46)",
+          "oklch(49.29% 0.0308 86.46)",
+          "oklch(60.71% 0.0308 86.46)",
+          "oklch(72.14% 0.0308 86.46)",
+          "oklch(83.57% 0.0308 86.46)",
+          "oklch(95% 0.0308 86.46)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Countertop surface",
+        "canonical": "#f5e6c8",
+        "tonalRamp": [
+          "oklch(15% 0.0427 84.57)",
+          "oklch(26.43% 0.0427 84.57)",
+          "oklch(37.86% 0.0427 84.57)",
+          "oklch(49.29% 0.0427 84.57)",
+          "oklch(60.71% 0.0427 84.57)",
+          "oklch(72.14% 0.0427 84.57)",
+          "oklch(83.57% 0.0427 84.57)",
+          "oklch(95% 0.0427 84.57)"
+        ]
+      },
+      "red": {
+        "role": "primary",
+        "displayName": "La Stazione red",
+        "canonical": "#b62b1d",
+        "tonalRamp": [
+          "oklch(15% 0.1776 30.04)",
+          "oklch(26.43% 0.1776 30.04)",
+          "oklch(37.86% 0.1776 30.04)",
+          "oklch(49.29% 0.1776 30.04)",
+          "oklch(60.71% 0.1776 30.04)",
+          "oklch(72.14% 0.1776 30.04)",
+          "oklch(83.57% 0.1776 30.04)",
+          "oklch(95% 0.1776 30.04)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Dark café ink",
+        "canonical": "#491d16",
+        "tonalRamp": [
+          "oklch(15% 0.0690 30.86)",
+          "oklch(26.43% 0.0690 30.86)",
+          "oklch(37.86% 0.0690 30.86)",
+          "oklch(49.29% 0.0690 30.86)",
+          "oklch(60.71% 0.0690 30.86)",
+          "oklch(72.14% 0.0690 30.86)",
+          "oklch(83.57% 0.0690 30.86)",
+          "oklch(95% 0.0690 30.86)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Secondary café ink",
+        "canonical": "#79554a",
+        "tonalRamp": [
+          "oklch(15% 0.0515 37.69)",
+          "oklch(26.43% 0.0515 37.69)",
+          "oklch(37.86% 0.0515 37.69)",
+          "oklch(49.29% 0.0515 37.69)",
+          "oklch(60.71% 0.0515 37.69)",
+          "oklch(72.14% 0.0515 37.69)",
+          "oklch(83.57% 0.0515 37.69)",
+          "oklch(95% 0.0515 37.69)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline divider",
+        "canonical": "rgb(73 29 22 / 22%)",
+        "tonalRamp": [
+          "oklch(15% 0.0690 30.86 / 22%)",
+          "oklch(26.43% 0.0690 30.86 / 22%)",
+          "oklch(37.86% 0.0690 30.86 / 22%)",
+          "oklch(49.29% 0.0690 30.86 / 22%)",
+          "oklch(60.71% 0.0690 30.86 / 22%)",
+          "oklch(72.14% 0.0690 30.86 / 22%)",
+          "oklch(83.57% 0.0690 30.86 / 22%)",
+          "oklch(95% 0.0690 30.86 / 22%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Expressive display",
+        "purpose": "Fraunces, Georgia, serif; hero clamp(64px,6.55vw,96px), weight 500, line-height 1.025, letter-spacing -0.04em. Mobile and intermediate widths use explicit overrides."
+      },
+      "headline": {
+        "displayName": "Section heading",
+        "purpose": "Fraunces, Georgia, serif; generic h2 clamp(42px,4.6vw,68px), weight 500, line-height 1.02, letter-spacing -0.04em. Individual story and visit headings vary."
+      },
+      "body": {
+        "displayName": "Readable body",
+        "purpose": "DM Sans, sans-serif; base 16px, line-height 1.55. Supporting copy uses section-specific sizes and line-heights; mobile copy is commonly 13–14px."
+      },
+      "menuTitle": {
+        "displayName": "Menu item",
+        "purpose": "Fraunces, Georgia, serif in previews, clamp(20px,1.85vw,25px), weight 500. Full-menu item titles use DM Sans, 15px, weight 600, line-height 1.4."
+      },
+      "action": {
+        "displayName": "Action text",
+        "purpose": "DM Sans, sans-serif; primary button 13px, weight 600; menu filter 14px, weight 600; currencies 11px, weight 700, tabular prices."
+      }
+    },
+    "shadows": [
+      {
+        "name": "main-photograph",
+        "value": "0 14px 30px rgb(73 29 22 / 12%)",
+        "purpose": "Separate the largest offset photograph from the paper field."
+      },
+      {
+        "name": "small-photograph",
+        "value": "0 9px 20px rgb(73 29 22 / 16%)",
+        "purpose": "Make the smaller overlapping photograph read as a separate print."
+      },
+      {
+        "name": "visit-photograph",
+        "value": "0 14px 32px rgb(62 14 6 / 18%)",
+        "purpose": "Lift a real terrace photograph on the red visit surface."
+      },
+      {
+        "name": "menu-dialog",
+        "value": "0 24px 100px rgb(30 8 3 / 25%)",
+        "purpose": "Separate the focused menu task from the underlying page."
+      },
+      {
+        "name": "mobile-dock",
+        "value": "0 -4px 20px rgb(73 29 22 / 9%)",
+        "purpose": "Separate fixed quick actions from scrolling content."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "Shared CSS control feedback easing, from --ease-out."
+      },
+      {
+        "name": "press",
+        "value": "160ms; scale(.97)",
+        "purpose": "Primary and icon button press feedback; menu controls use 140ms."
+      },
+      {
+        "name": "hero-entry",
+        "value": "power3.out; heading 0.7s; photograph 0.9s; stagger 0.065s",
+        "purpose": "GSAP entrance coordinates the first impression, starting from visible content."
+      },
+      {
+        "name": "menu-entry",
+        "value": "240ms; cubic-bezier(0.23, 1, 0.32, 1); translateY(12px) scale(.985)",
+        "purpose": "Pointer-triggered full-menu dialog entrance; omitted for keyboard and reduced motion."
+      },
+      {
+        "name": "desktop-photo-depth",
+        "value": "photo y -36px with scrub .6; visit rotation 1deg to 3deg with scrub .7",
+        "purpose": "ScrollTrigger depth treatment only at min-width 851px and no reduced-motion preference."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Remove ScrollTriggers and position animation; retain readable content and instantaneous state changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-page",
+        "value": "359px"
+      },
+      {
+        "name": "narrow-menu",
+        "value": "360px"
+      },
+      {
+        "name": "menu-preview-single-column",
+        "value": "500px"
+      },
+      {
+        "name": "mobile-page",
+        "value": "620px"
+      },
+      {
+        "name": "menu-fullscreen",
+        "value": "700px"
+      },
+      {
+        "name": "tablet-page",
+        "value": "850px"
+      },
+      {
+        "name": "desktop-motion-minimum",
+        "value": "851px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1150px"
+      },
+      {
+        "name": "wide-page",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "description": "Red pill with paper text; menu and visit actions.",
+      "html": "<button class=\"ds-button\">Explore the menu <svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:54px;padding:16px 26px;background:var(--red,#b62b1d);color:var(--paper,#fff5df);border:1px solid var(--red,#b62b1d);border-radius:100px;font-size:13px;font-weight:600;white-space:nowrap;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;touch-action:manipulation;transition:transform 160ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 200ms,color 200ms}.ds-button:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:5px}.ds-button:active{transform:scale(.97)}@media(hover:hover) and (pointer:fine){.ds-button:hover{background:var(--ink,#491d16);border-color:var(--ink,#491d16)}}@media(prefers-reduced-motion:reduce){.ds-button{transition-duration:.01ms}.ds-button:active{transform:none}}"
+    },
+    {
+      "name": "Light action on red",
+      "kind": "button",
+      "description": "Paper button on the red visit field; contrast-specific focus treatment.",
+      "html": "<div class=\"ds-visit-surface\"><button class=\"ds-button ds-button-light\">Get directions <svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></button></div>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:54px;padding:16px 26px;background:var(--red,#b62b1d);color:var(--paper,#fff5df);border:1px solid var(--red,#b62b1d);border-radius:100px;font-size:13px;font-weight:600;white-space:nowrap;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;touch-action:manipulation;transition:transform 160ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 200ms,color 200ms}.ds-button:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:5px}.ds-button:active{transform:scale(.97)}@media(hover:hover) and (pointer:fine){.ds-button:hover{background:var(--ink,#491d16);border-color:var(--ink,#491d16)}}@media(prefers-reduced-motion:reduce){.ds-button{transition-duration:.01ms}.ds-button:active{transform:none}}.ds-visit-surface{padding:20px;background:var(--red,#b62b1d)}.ds-button-light{background:var(--paper,#fff5df);color:var(--red,#b62b1d);border-color:var(--paper,#fff5df)}.ds-visit-surface .ds-button-light:focus-visible{outline-color:var(--paper,#fff5df)}@media(hover:hover) and (pointer:fine){.ds-button-light:hover{background:var(--surface,#f5e6c8);color:var(--ink,#491d16);border-color:var(--surface,#f5e6c8)}}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "description": "Quiet secondary action with a small directional cue.",
+      "html": "<a class=\"ds-text-link\" href=\"#visit\">Find your way here <svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:14px;color:var(--ink,#491d16);font-size:13px;font-weight:500;line-height:1.8;text-underline-offset:5px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;touch-action:manipulation;}.ds-text-link svg{transition:transform 200ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-text-link:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:5px}@media(hover:hover) and (pointer:fine){.ds-text-link:hover{text-decoration:underline}.ds-text-link:hover svg{transform:translateX(3px)}}@media(prefers-reduced-motion:reduce){.ds-text-link svg{transition:none}.ds-text-link:hover svg{transform:none}}"
+    },
+    {
+      "name": "Round gallery control",
+      "kind": "button",
+      "description": "Circular outlined arrow control; opacity identifies disabled ends.",
+      "html": "<button class=\"ds-round-button\" aria-label=\"Next photos\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-round-button{display:grid;place-items:center;width:44px;height:44px;border:1px solid currentColor;border-radius:50%;color:var(--ink,#491d16);background:transparent;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;touch-action:manipulation;transition:background-color 200ms,color 200ms,transform 160ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-round-button:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:5px}.ds-round-button:active{transform:scale(.97)}.ds-round-button:disabled{opacity:.3;cursor:default}@media(hover:hover) and (pointer:fine){.ds-round-button:not(:disabled):hover{background:var(--ink,#491d16);color:var(--paper,#fff5df)}}@media(prefers-reduced-motion:reduce){.ds-round-button{transition:none}.ds-round-button:active{transform:none}}"
+    },
+    {
+      "name": "Menu category filter",
+      "kind": "chip",
+      "description": "Real category state, displayed with aria-pressed.",
+      "html": "<div class=\"ds-filter-group\" role=\"group\" aria-label=\"Featured menu categories\"><button class=\"ds-filter\" aria-pressed=\"true\">Coffee</button><button class=\"ds-filter\" aria-pressed=\"false\">Tea</button></div>",
+      "css": ".ds-filter-group{display:flex;gap:5px}.ds-filter{min-height:44px;padding:10px 19px;border:0;border-radius:100px;background:transparent;color:var(--ink,#491d16);font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;touch-action:manipulation;transition:background-color 150ms,transform 140ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-filter[aria-pressed=true]{color:var(--paper,#fff5df);background:var(--red,#b62b1d)}.ds-filter:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:4px}.ds-filter:active{transform:scale(.97)}@media(hover:hover) and (pointer:fine){.ds-filter:not([aria-pressed=true]):hover{background:rgb(73 29 22 / 8%)}}@media(prefers-reduced-motion:reduce){.ds-filter{transition:none}.ds-filter:active{transform:none}}"
+    },
+    {
+      "name": "Menu currency",
+      "kind": "chip",
+      "description": "Compact USD/LBP selection; prices use tabular numerals.",
+      "html": "<div class=\"ds-currency\" role=\"group\" aria-label=\"Menu currency\"><button aria-pressed=\"true\">USD</button><button aria-pressed=\"false\">LBP</button></div>",
+      "css": ".ds-currency{display:inline-flex;padding:3px;border:1px solid rgb(73 29 22 / 24%);border-radius:100px}.ds-currency button{min-width:48px;min-height:36px;padding:7px 10px;border:0;border-radius:100px;background:transparent;color:var(--ink,#491d16);font-size:11px;font-weight:700;letter-spacing:.035em;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;touch-action:manipulation;transition:background-color 150ms,transform 140ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-currency button[aria-pressed=true]{background:var(--ink,#491d16);color:var(--paper,#fff5df)}.ds-currency button:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:4px}.ds-currency button:active{transform:scale(.97)}@media(hover:hover) and (pointer:fine){.ds-currency button:not([aria-pressed=true]):hover{background:rgb(73 29 22 / 8%)}}@media(prefers-reduced-motion:reduce){.ds-currency button{transition:none}.ds-currency button:active{transform:none}}"
+    },
+    {
+      "name": "Menu search",
+      "kind": "input",
+      "description": "Visible border and focus-within ring with a 16px input for mobile typing.",
+      "html": "<div class=\"ds-search-wrap\"><input class=\"ds-search\" type=\"search\" aria-label=\"Search the entire menu\" placeholder=\"Find your next favorite…\"></div>",
+      "css": ".ds-search-wrap{display:flex;max-width:420px;border:1px solid rgb(73 29 22 / 28%);border-radius:5px;background:rgb(255 255 255 / 30%)}.ds-search{width:100%;min-width:0;height:49px;padding:10px 13px;border:0;outline:0;background:transparent;color:var(--ink,#491d16);font-family:'DM Sans',sans-serif;font-size:16px;caret-color:var(--red,#b62b1d)}.ds-search::placeholder{color:var(--muted,#79554a);opacity:1}.ds-search-wrap:focus-within{outline:2px solid var(--red,#b62b1d);outline-offset:3px}"
+    },
+    {
+      "name": "Desktop navigation",
+      "kind": "nav",
+      "description": "Three direct anchors with quiet hover underlines and visible keyboard focus.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#menu\">The menu</a><a href=\"#our-place\">Our place</a><a href=\"#visit\">Find us</a></nav>",
+      "css": ".ds-nav{display:flex;gap:35px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500}.ds-nav a{position:relative;padding-block:16px;color:var(--ink,#491d16);text-decoration:none}.ds-nav a:after{content:'';position:absolute;bottom:9px;left:0;width:100%;height:1px;background:var(--red,#b62b1d);transform:scaleX(0);transform-origin:left;transition:transform 200ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-nav a:focus-visible{outline:2px solid var(--red,#b62b1d);outline-offset:5px}@media(hover:hover) and (pointer:fine){.ds-nav a:hover:after{transform:scaleX(1)}}@media(prefers-reduced-motion:reduce){.ds-nav a:after{transition:none}}"
+    },
+    {
+      "name": "Full-menu item",
+      "kind": "custom",
+      "description": "Unboxed item row with aligned real price; actual dataset supplies names and prices.",
+      "html": "<article class=\"ds-menu-item\"><div class=\"ds-menu-heading\"><h4>Cappuccino</h4><span class=\"ds-menu-price\">$3.30</span></div></article>",
+      "css": ".ds-menu-item{padding:18px 0;border-top:1px solid rgb(73 29 22 / 22%);max-width:420px;color:var(--ink,#491d16);font-family:'DM Sans',sans-serif}.ds-menu-heading{display:flex;align-items:baseline;justify-content:space-between;gap:18px}.ds-menu-heading h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.4}.ds-menu-price{flex-shrink:0;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.5}"
+    }
+  ],
+  "narrative": {
+    "northStar": "the café photo album",
+    "overview": "The photo album pairs the actual warm red cup-and-company logo with asymmetric photographs, personal captions, generous paper space and confident soft display lettering. It carries both welcoming marketing and dense menu rows without turning the menu into product cards.",
+    "keyCharacteristics": [
+      "Paper, photo edges and red typography carry the identity.",
+      "Native scroll.",
+      "Reduced motion disables movement.",
+      "Content is visible without animation JS."
+    ],
+    "rules": [],
+    "dos": [],
+    "donts": []
+  }
+}
