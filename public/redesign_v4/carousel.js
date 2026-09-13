@@ -4,6 +4,10 @@
   if (!album) return;
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const photoKey = url => new URL(url, location.href).href.replace(/-(?:640|1000)\.webp(?=$|\?)/, '.webp');
+  // Keep the actual preloaded HTML images. Replacing them with fresh IMG nodes
+  // needlessly refetches no-store responses and ties their LCP to this script.
+  const originalImages = new Map([...album.querySelectorAll('img')].map(image => [photoKey(image.getAttribute('src')), image]));
   const fallback = [...album.querySelectorAll('figure')].map((figure, index) => ({
     id: `original-${index}`, url: figure.querySelector('img').getAttribute('src'),
     alt: figure.querySelector('img').alt, caption: figure.querySelector('figcaption')?.textContent || '',
@@ -134,25 +138,28 @@
       figure.setAttribute('aria-hidden', 'true');
       const imageWrap = document.createElement('div');
       imageWrap.className = 'hero-slide-image';
-      const image = document.createElement('img');
+      const initialIndex = photos.length > 1 ? photos.length * 2 + current : 0;
+      const key = photoKey(photo.url);
+      const existingImage = Math.abs(index - initialIndex) <= 1 ? originalImages.get(key) : null;
+      const image = existingImage || document.createElement('img');
+      if (existingImage) originalImages.delete(key);
       image.alt = photo.alt || photo.caption || 'A moment at La Stazione';
       image.width = 1080;
       image.height = 1080;
       image.decoding = 'async';
       image.draggable = false;
       // Set priority and lazy loading before assigning any network URL.
-      const initialIndex = photos.length > 1 ? photos.length * 2 + current : 0;
       image.loading = Math.abs(index - initialIndex) <= 1 ? 'eager' : 'lazy';
       if (index === initialIndex) image.fetchPriority = 'high';
       const original = photo.url.match(/^\/redesign_v4\/photos\/(gallery-\d{2})-1000\.webp$/);
-      if (original) {
+      if (original && !existingImage) {
         // Match the original mobile preload and avoid fetching a second, larger
         // file when the shared content replaces the static opening photographs.
         const stem = `/redesign_v4/photos/${original[1]}`;
         image.sizes = '(max-width: 620px) 43.5vw, (max-width: 850px) min(31.5vw, 252px), (min-width: 1600px) 372px, min(31.5vw, 340.2px)';
         image.srcset = `${stem}-640.webp 640w, ${stem}-1000.webp 1000w`;
         image.src = `${stem}-640.webp`;
-      } else image.src = photo.url;
+      } else if (!existingImage) image.src = photo.url;
       const caption = document.createElement('figcaption');
       caption.textContent = photo.caption || '';
       imageWrap.append(image);
@@ -161,6 +168,7 @@
       slides.push(figure);
     }
     track.append(fragment);
+    originalImages.clear();
     lastWidth = 0;
     measure();
     announce();
