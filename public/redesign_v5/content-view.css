@@ -1,0 +1,13 @@
+.menu-wheel .ink-art { background-image: none; }
+.menu-illustration[data-art-ready] .ink-art { background-image: url('art/menu-illustrations.webp'); }
+.art-matcha { background-position: 0 0; }
+.art-ibrik { background-position: 100% 0; }
+.art-sandwich { background-position: 0 100%; }
+.art-cake { background-position: 100% 100%; }
+/* The wider sandwich and cake drawings need clear space around the caption. */
+.menu-wheel .wheel-slot { width: 31%; height: 31%; }
+.menu-wheel .wheel-slot:nth-child(1) { top: 0; left: 34.5%; }
+.menu-wheel .wheel-slot:nth-child(2) { top: 34.5%; right: 0; }
+.menu-wheel .wheel-slot:nth-child(3) { bottom: 0; left: 34.5%; }
+.menu-wheel .wheel-slot:nth-child(4) { top: 34.5%; left: 0; }
+.moments[hidden] { display: none; }

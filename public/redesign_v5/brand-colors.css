@@ -1,0 +1,21 @@
+/* Color roles drawn from La Stazione's olive lettering and red cup mark. */
+:root {
+  --brand-red: #b52e20;
+  --brand-red-hover: #942416;
+}
+.button:not(.button-light) {
+  color: var(--paper);
+  background-color: var(--brand-red);
+  border-color: var(--brand-red);
+}
+.button:not(.button-light):hover {
+  background-color: var(--brand-red-hover);
+  border-color: var(--brand-red-hover);
+}
+.menu-explore { color: var(--brand-red); border-bottom-color: var(--brand-red); }
+.menu-explore:hover { color: var(--brand-red-hover); border-bottom-color: var(--brand-red-hover); }
+.coffee-break > .icon, .footer-wordmark > svg { color: var(--brand-red); }
+.mobile-dock a:first-child { background-color: var(--brand-red); color: var(--paper); }
+.menu-search-wrap { border-color: #7c8067; }
+/* Warm the original ink toward the olive lettering; photographs stay natural. */
+.ink-art:not(.visit-art) { filter: hue-rotate(-35deg); }
