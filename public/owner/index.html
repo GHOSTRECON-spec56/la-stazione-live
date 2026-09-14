@@ -22,6 +22,13 @@
     <h1 id="auth-title">Your workspace, with care.</h1>
     <p id="auth-description">Checking your sign-in before opening the menu editor.</p>
     <div class="auth-actions">
+      <form id="account-choice" class="account-choice" hidden>
+        <label class="field" for="sign-in-email"><span>Choose your Google account</span><input id="sign-in-email" type="email" autocomplete="email" inputmode="email" maxlength="254" value="lastazione10@gmail.com" required></label>
+        <button type="submit" class="button primary">Continue with this account</button>
+        <button type="button" class="text-button" id="another-account">Use another account</button>
+        <p class="hint">Use La Stazione’s email, or an email the owner has given access to.</p>
+      </form>
+      <div id="selected-account" hidden><span id="selected-email"></span><button type="button" class="text-button" id="change-account">Change account</button></div>
       <div id="google-sign-in" hidden></div>
       <button type="button" class="button quiet" id="auth-retry" hidden>Try again</button>
       <button type="button" class="text-button" id="locked-sign-out" hidden>Sign out</button>

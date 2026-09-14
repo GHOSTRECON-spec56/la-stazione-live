@@ -2,6 +2,8 @@ const $ = selector => document.querySelector(selector);
 const workspace = $('#workspace');
 const gate = $('#auth-gate');
 const googleButton = $('#google-sign-in');
+const accountChoice = $('#account-choice');
+let selectedEmail = null;
 const retryButton = $('#auth-retry');
 const accessList = $('#access-list');
 const accessForm = $('#grant-access-form');
@@ -53,6 +55,9 @@ function showGate({ title, description, message = '', busy = false, signedIn = f
   $('#auth-description').textContent = description;
   $('#auth-feedback').textContent = message;
   googleButton.hidden = !google;
+  accountChoice.hidden = !google || Boolean(selectedEmail);
+  $('#selected-account').hidden = !google || !selectedEmail;
+  if (!selectedEmail) googleButton.hidden = true;
   googleButton.inert = busy;
   retryButton.hidden = !retry;
   retryButton.disabled = busy;
@@ -100,20 +105,25 @@ async function showSignIn(message = '') {
         });
         return;
       }
-      const identity = await loadGoogle();
       showGate({
         title: 'Your workspace, with care.',
-        description: 'Sign in with your approved Google account to update the menu and photos.',
+        description: 'Choose an account to sign in and care for your menu and photos.',
         message, google: true
       });
-      if (renderedNonce !== loginConfig.nonce) {
-        identity.initialize({ client_id: loginConfig.clientId, nonce: loginConfig.nonce, callback: handleGoogleCredential, auto_select: false });
+      if (!selectedEmail) return;
+      const email = selectedEmail;
+      const identity = await loadGoogle();
+      if (selectedEmail !== email) return;
+      $('#selected-email').textContent = email;
+      if (renderedNonce !== `${loginConfig.nonce}:${email}`) {
+        identity.disableAutoSelect();
+        identity.initialize({ client_id: loginConfig.clientId, nonce: loginConfig.nonce, callback: handleGoogleCredential, auto_select: false, button_auto_select: false, login_hint: email });
         googleButton.replaceChildren();
         identity.renderButton(googleButton, {
-          type: 'standard', theme: 'outline', size: 'large', text: 'signin_with', shape: 'rectangular',
-          width: Math.min(288, Math.max(200, gate.clientWidth - 60))
+          type: 'standard', theme: 'outline', size: 'large', text: 'continue_with', shape: 'pill', locale: 'en',
+          width: Math.min(340, Math.max(200, gate.clientWidth - 60))
         });
-        renderedNonce = loginConfig.nonce;
+        renderedNonce = `${loginConfig.nonce}:${email}`;
       }
     } catch (error) {
       loginConfig = null;
@@ -122,10 +132,32 @@ async function showSignIn(message = '') {
         description: 'Editing is locked. Check your connection and try again.',
         message: error.message || 'Google sign-in could not load.', retry: true
       });
-    } finally { signInPromise = null; }
+    }
   })();
-  return signInPromise;
+  try { return await signInPromise; }
+  finally { signInPromise = null; }
 }
+
+accountChoice.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (loginInProgress) return;
+  selectedEmail = $('#sign-in-email').value.trim().toLowerCase();
+  if (signInPromise) await signInPromise;
+  await showSignIn();
+});
+$('#another-account').addEventListener('click', () => {
+  $('#sign-in-email').value = '';
+  $('#sign-in-email').focus();
+});
+$('#change-account').addEventListener('click', async () => {
+  if (loginInProgress) return;
+  selectedEmail = null;
+  renderedNonce = null;
+  googleButton.replaceChildren();
+  if (signInPromise) await signInPromise;
+  await showSignIn();
+  $('#sign-in-email').focus();
+});
 
 async function handleGoogleCredential(response) {
   if (loginInProgress || signingOut) return;
@@ -142,6 +174,7 @@ async function handleGoogleCredential(response) {
   } catch (error) {
     loginConfig = null;
     renderedNonce = null;
+    selectedEmail = null;
     await showSignIn(error.status === 403
       ? 'This Google account does not have access. Ask the owner to add its email, or choose an approved account.'
       : error.status === 401 ? 'Google sign-in expired. Please sign in again.'
@@ -208,7 +241,7 @@ async function checkSession() {
       });
       else if (error.status === 503) showGate({
         title: 'Your workspace is locked.',
-        description: 'Google sign-in is being set up. Editing is locked until setup is complete.',
+        description: 'The sign-in service is temporarily unavailable. Please try again.',
         message: 'You can check again in a moment.', retry: true, signedIn: Boolean(editorEmail)
       });
       else showGate({
