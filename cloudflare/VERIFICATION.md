@@ -16,3 +16,9 @@ Google Client ID is configured in the account-specific deployment file. After th
 - Wrangler is authenticated to the coffee shop's Cloudflare account. The registry uses `jermaine.ns.cloudflare.com` and `jessica.ns.cloudflare.com`. The owner replaced the Namecheap nameservers and removed the old website A/CNAME records; Wrangler then attached both Custom Domains. The Netlify project remains available as a backup.
 
 Use [CLOUDFLARE-MIGRATION.md](../CLOUDFLARE-MIGRATION.md) for deployment and recovery instructions. Email forwarding has not been tested; the existing MX/TXT records were retained by the owner. Real Google account login remains an interactive verification step.
+
+## Standard Google sign-in ? 14 September 2026
+
+Deployed version `f4600209-c004-4f6e-804f-55d35f1756b9` restores the official Google button. There is no website email form or login hint; popup UX is explicit, FedCM button auto-selection and One Tap auto-selection are disabled. A real signed-out browser opened accounts.google.com from the production domain successfully. Actual multi-account selection and completed owner sign-in require the user?s Google session and were not simulated as live success. Mobile and desktop browser fixtures verify denied accounts leave the workspace locked and the Google button available for another attempt. All 22 security/content tests passed.
+
+The production content verifier passed through the Cloudflare IP with normal certificate validation: exact exported menu and photo selections, pages, QR asset, owner headers and anonymous rejection. The build no longer reads netlify.toml or needs Netlify Functions. Old saved photo paths are handled locally by the Cloudflare Worker for compatibility, without contacting Netlify.

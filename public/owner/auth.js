@@ -2,8 +2,6 @@ const $ = selector => document.querySelector(selector);
 const workspace = $('#workspace');
 const gate = $('#auth-gate');
 const googleButton = $('#google-sign-in');
-const accountChoice = $('#account-choice');
-let selectedEmail = null;
 const retryButton = $('#auth-retry');
 const accessList = $('#access-list');
 const accessForm = $('#grant-access-form');
@@ -28,7 +26,7 @@ async function request(path, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15000);
   try {
-    const response = await fetch(`/.netlify/functions/${path}`, {
+    const response = await fetch(`/api/${path}`, {
       ...options, cache: 'no-store', credentials: 'same-origin', signal: controller.signal,
       headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...options.headers }
     });
@@ -55,9 +53,6 @@ function showGate({ title, description, message = '', busy = false, signedIn = f
   $('#auth-description').textContent = description;
   $('#auth-feedback').textContent = message;
   googleButton.hidden = !google;
-  accountChoice.hidden = !google || Boolean(selectedEmail);
-  $('#selected-account').hidden = !google || !selectedEmail;
-  if (!selectedEmail) googleButton.hidden = true;
   googleButton.inert = busy;
   retryButton.hidden = !retry;
   retryButton.disabled = busy;
@@ -77,7 +72,7 @@ function loadGoogle() {
         reject(new Error('Google sign-in could not load. Check your connection and try again.'));
       };
       const timeout = setTimeout(fail, 15000);
-      script.src = 'https://accounts.google.com/gsi/client';
+      script.src = 'https://accounts.google.com/gsi/client?hl=en';
       script.async = true;
       script.onload = () => {
         clearTimeout(timeout);
@@ -107,23 +102,19 @@ async function showSignIn(message = '') {
       }
       showGate({
         title: 'Your workspace, with care.',
-        description: 'Choose an account to sign in and care for your menu and photos.',
+        description: 'Sign in with Google to update your menu and photos.',
         message, google: true
       });
-      if (!selectedEmail) return;
-      const email = selectedEmail;
       const identity = await loadGoogle();
-      if (selectedEmail !== email) return;
-      $('#selected-email').textContent = email;
-      if (renderedNonce !== `${loginConfig.nonce}:${email}`) {
+      if (renderedNonce !== loginConfig.nonce) {
         identity.disableAutoSelect();
-        identity.initialize({ client_id: loginConfig.clientId, nonce: loginConfig.nonce, callback: handleGoogleCredential, auto_select: false, button_auto_select: false, login_hint: email });
+        identity.initialize({ client_id: loginConfig.clientId, nonce: loginConfig.nonce, callback: handleGoogleCredential, auto_select: false, button_auto_select: false, use_fedcm_for_button: false, ux_mode: 'popup' });
         googleButton.replaceChildren();
         identity.renderButton(googleButton, {
-          type: 'standard', theme: 'outline', size: 'large', text: 'continue_with', shape: 'pill', locale: 'en',
+          type: 'standard', theme: 'outline', size: 'large', text: 'signin_with', shape: 'pill', locale: 'en',
           width: Math.min(340, Math.max(200, gate.clientWidth - 60))
         });
-        renderedNonce = `${loginConfig.nonce}:${email}`;
+        renderedNonce = loginConfig.nonce;
       }
     } catch (error) {
       loginConfig = null;
@@ -137,27 +128,6 @@ async function showSignIn(message = '') {
   try { return await signInPromise; }
   finally { signInPromise = null; }
 }
-
-accountChoice.addEventListener('submit', async event => {
-  event.preventDefault();
-  if (loginInProgress) return;
-  selectedEmail = $('#sign-in-email').value.trim().toLowerCase();
-  if (signInPromise) await signInPromise;
-  await showSignIn();
-});
-$('#another-account').addEventListener('click', () => {
-  $('#sign-in-email').value = '';
-  $('#sign-in-email').focus();
-});
-$('#change-account').addEventListener('click', async () => {
-  if (loginInProgress) return;
-  selectedEmail = null;
-  renderedNonce = null;
-  googleButton.replaceChildren();
-  if (signInPromise) await signInPromise;
-  await showSignIn();
-  $('#sign-in-email').focus();
-});
 
 async function handleGoogleCredential(response) {
   if (loginInProgress || signingOut) return;
@@ -174,7 +144,6 @@ async function handleGoogleCredential(response) {
   } catch (error) {
     loginConfig = null;
     renderedNonce = null;
-    selectedEmail = null;
     await showSignIn(error.status === 403
       ? 'This Google account does not have access. Ask the owner to add its email, or choose an approved account.'
       : error.status === 401 ? 'Google sign-in expired. Please sign in again.'

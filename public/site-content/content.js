@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   let content, etag = null, connected = false, lastError = null;
-  const endpoint = '/.netlify/functions/content';
+  const endpoint = '/api/content';
   const emit = () => document.dispatchEvent(new CustomEvent('lastazione:content', {detail:{content}}));
   async function jsonFetch(url, options = {}) {
     const controller = new AbortController();
@@ -51,7 +51,7 @@
       if(!blob||blob.size>3_500_000)throw new Error('This photo is too large. Please export it as a smaller JPEG.');
     } catch(error) {throw new Error(error.message?.includes('too large')?error.message:'This image could not be opened. Please choose a JPEG, PNG or WebP photo.');}
     finally {URL.revokeObjectURL(objectURL);}
-    return jsonFetch('/.netlify/functions/media',{method:'POST',headers:{'Content-Type':blob.type},body:blob});
+    return jsonFetch('/api/media',{method:'POST',headers:{'Content-Type':blob.type},body:blob});
   }
   const fallback = jsonFetch('/site-content/default.json').then(data=>({data}),error=>({error}));
   // A healthy API must never wait for the backup file; handle its rejection eagerly.

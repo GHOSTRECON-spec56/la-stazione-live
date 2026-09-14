@@ -25,22 +25,7 @@ async function prune(directory) {
 }
 await prune(destination);
 for(const item of included)await cp(path.join('public',item),path.join(destination,item),{recursive:true});
-const config=await readFile('netlify.toml','utf8');
-const redirects=config.split('[[redirects]]').slice(1).map(block=>{
-  const from=/^\s*from\s*=\s*"([^"]+)"/m.exec(block)?.[1];
-  const to=/^\s*to\s*=\s*"([^"]+)"/m.exec(block)?.[1];
-  return `${from} ${to} 301`;
-});
-await writeFile(path.join(destination,'_redirects'),redirects.join('\n')+'\n');
-const headerBlock=config.split('[[headers]]')[1].split('# Keep')[0];
-const headers=[...headerBlock.matchAll(/^\s+([\w-]+) = "(.*)"$/gm)]
-  .filter(([,name])=>name!=='for').map(([,name,value])=>`  ${name}: ${value}`);
-await writeFile(path.join(destination,'_headers'),`/owner/*\n${headers.join('\n')}\n/site-content/default.json\n  Cache-Control: no-cache\n`);
-// Use host-neutral routes in Cloudflare output; source remains deployable on Netlify for rollback.
-for(const item of ['site-content/content.js','owner/auth.bundle.js']) {
-  const filename=path.join(destination,item);
-  await writeFile(filename,(await readFile(filename,'utf8')).replaceAll('/.netlify/functions/','/api/'));
-}
+for(const name of ['_headers','_redirects'])await cp(path.join('cloudflare',name),path.join(destination,name));
 let count=0,total=0;
 async function check(directory) {
   for(const entry of await readdir(directory,{withFileTypes:true})) {
