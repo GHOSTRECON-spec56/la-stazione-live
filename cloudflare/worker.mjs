@@ -5,7 +5,13 @@ import {createCloudflareStore,cleanExpiredRecords} from './store.mjs';
 
 export default {
   async fetch(request,env) {
-    const pathname=new URL(request.url).pathname;
+    const url=new URL(request.url);
+    const pathname=url.pathname;
+    // Google sign-in always starts on the registered production origin.
+    if((pathname==='/owner'||pathname.startsWith('/owner/'))&&
+       ['www.lastazionelb.com','la-stazione.la-stazione-site.workers.dev'].includes(url.hostname)) {
+      return new Response(null,{status:302,headers:{Location:'https://lastazionelb.com'+pathname+url.search,'Cache-Control':'no-store'}});
+    }
     // Keep existing clients and saved uploaded-photo URLs working across cutover.
     const route=/^\/(?:api|\.netlify\/functions)\/(content|media|owner-login|owner-session|owner-access)$/.exec(pathname)?.[1];
     if(!route)return env.ASSETS.fetch(request);

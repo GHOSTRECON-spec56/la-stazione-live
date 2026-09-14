@@ -7,6 +7,23 @@ import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {createCloudflareStore,cleanExpiredRecords,prepareJSONWrite} from '../cloudflare/store.mjs';
 import {createGoogleIdTokenVerifier} from '../lib/google-verifier.mjs';
 import {SignJWT,generateKeyPair,exportJWK,createLocalJWKSet} from 'jose';
+import worker from '../cloudflare/worker.mjs';
+
+test('Owner links use the registered Google origin while public pages and local previews stay on their host',async()=>{
+  const assets={ASSETS:{fetch:async()=>new Response('asset')}};
+  for(const host of ['www.lastazionelb.com','la-stazione.la-stazione-site.workers.dev']) {
+    for(const path of ['/owner','/owner/','/owner/index.html?from=bookmark']) {
+      const response=await worker.fetch(new Request(`https://${host}${path}`),assets);
+      assert.equal(response.status,302);
+      assert.equal(response.headers.get('location'),'https://lastazionelb.com'+path);
+      assert.equal(response.headers.get('cache-control'),'no-store');
+    }
+    assert.equal(await(await worker.fetch(new Request(`https://${host}/menu/`),assets)).text(),'asset');
+  }
+  for(const url of ['https://lastazionelb.com/owner/','http://localhost:8787/owner/']) {
+    assert.equal(await(await worker.fetch(new Request(url),assets)).text(),'asset');
+  }
+});
 
 let mf,env;
 const origin='https://lastazionelb.test',clientId='cloudflare-test.apps.googleusercontent.com';
