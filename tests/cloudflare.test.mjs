@@ -37,6 +37,14 @@ before(async()=>{
 after(async()=>{await mf?.dispose();});
 const store=namespace=>createCloudflareStore(env,namespace);
 const request=(path,method='GET',body,cookie)=>mf.dispatchFetch(origin+path,{method,headers:{Origin:origin,'Content-Type':'application/json',...(cookie?{Cookie:cookie}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});
+test('Published menu export provides category tables and CSV without accepting writes',async()=>{
+  const response=await request('/api/menu-export');assert.equal(response.status,200);
+  const data=await response.json();assert.equal(data.tables.find(table=>table.id==='items').rows.length,103);
+  const csv=await request('/api/menu-export?format=csv&table=extras');assert.match(csv.headers.get('content-type'),/text\/csv/);assert.match(await csv.text(),/Food \/ Sandwiches/);
+  assert.equal((await request('/api/menu-export?format=csv&table=unknown')).status,404);
+  assert.equal((await request('/api/menu-export','POST',{})).status,405);
+  assert.equal(await(await request('/api/menu-export','HEAD')).text(),'');
+});
 async function session(email) {
   const token=randomBytes(32).toString('base64url');
   await store('access').setJSON('sessions/'+createHash('sha256').update(token).digest('hex'),{user:{id:email,email,name:'Test'},expiresAt:Date.now()+60000,createdAt:Date.now(),revoked:false});

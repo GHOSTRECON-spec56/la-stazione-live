@@ -2,11 +2,26 @@ import {createContentHandler} from '../lib/content-api.mjs';
 import {createGoogleSessions} from '../lib/google-session.mjs';
 import {createOwnerAuthorization} from '../lib/owner-auth.mjs';
 import {createCloudflareStore,cleanExpiredRecords} from './store.mjs';
+import {menuTables,tableCSV} from '../lib/menu-tables.mjs';
 
 export default {
   async fetch(request,env) {
     const url=new URL(request.url);
     const pathname=url.pathname;
+    if(pathname==='/api/menu-export') {
+      if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
+      const response=await createContentHandler(()=>createCloudflareStore(env,'content'))(new Request(url.origin+'/api/content'));
+      if(!response.ok)return response;
+      const data=await response.json(),tables=menuTables(data.content);
+      const headers={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
+      if(url.searchParams.get('format')==='csv') {
+        const table=tables.find(table=>table.id===(url.searchParams.get('table')||'items'));
+        if(!table)return new Response('Unknown menu table',{status:404});
+        return new Response(request.method==='HEAD'?null:tableCSV(table),{headers:{...headers,'Content-Type':'text/csv; charset=utf-8'}});
+      }
+      if(request.method==='HEAD')return new Response(null,{headers:{...headers,'Content-Type':'application/json; charset=utf-8'}});
+      return Response.json({title:data.content.menu.title,intro:data.content.menu.intro,source:url.origin+'/menu/',etag:data.etag,tables},{headers});
+    }
     // Google sign-in always starts on the registered production origin.
     if((pathname==='/owner'||pathname.startsWith('/owner/'))&&
        ['www.lastazionelb.com','la-stazione.la-stazione-site.workers.dev'].includes(url.hostname)) {
