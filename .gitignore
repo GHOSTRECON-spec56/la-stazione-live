@@ -4,3 +4,8 @@ node_modules/
 .local-data/
 .local-access/
 *.log
+.cloudflare/
+.wrangler/
+.dev.vars
+.migration-backups/
+wrangler.production.json

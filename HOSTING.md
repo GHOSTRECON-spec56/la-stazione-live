@@ -1,5 +1,7 @@
 # Hosting assessment — September 13, 2026
 
+**September 14 update:** the owner chose to move to Cloudflare Free. The migration is implemented and locally tested, with account activation and domain cutover pending. Follow [CLOUDFLARE-MIGRATION.md](CLOUDFLARE-MIGRATION.md). The assessment below describes the existing Netlify host; its recommendation to stay on Netlify is superseded by that decision.
+
 La Stazione is hosted on **Netlify**. Its CDN serves the website; serverless functions handle owner access, menu publishing and uploads; Netlify Blobs holds published content and access/session records. The connected GitHub repository deploys automatically when its `main` branch changes. There is no rented always-running server to maintain.
 
 The Netlify account's actual plan and current usage are not available through this workspace. Check **Usage & billing → Billing details → Plan** in the hosting account. Accounts from before September 4, 2025 may still have Legacy Free. Switching from legacy to credits cannot be undone.
