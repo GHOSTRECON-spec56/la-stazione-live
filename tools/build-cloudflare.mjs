@@ -26,6 +26,11 @@ async function prune(directory) {
 await prune(destination);
 for(const item of included)await cp(path.join('public',item),path.join(destination,item),{recursive:true});
 for(const name of ['_headers','_redirects'])await cp(path.join('cloudflare',name),path.join(destination,name));
+// Exact asset redirects outrank Cloudflare's overlapping retired-page splats.
+const photoFiles=await readdir(path.join(destination,'assets/site/photos'));
+const photoRedirects=['redesign',...Array.from({length:6},(_,i)=>`redesign_v${i+1}`)]
+  .flatMap(prefix=>photoFiles.map(name=>`/${prefix}/photos/${name} /assets/site/photos/${name} 301`));
+await writeFile(path.join(destination,'_redirects'),photoRedirects.join('\n')+'\n'+await readFile('cloudflare/_redirects','utf8'));
 let count=0,total=0;
 async function check(directory) {
   for(const entry of await readdir(directory,{withFileTypes:true})) {

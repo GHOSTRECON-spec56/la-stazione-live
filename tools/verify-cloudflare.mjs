@@ -17,6 +17,10 @@ for(const prefix of ['redesign',...Array.from({length:6},(_,i)=>'redesign_v'+(i+
   assert.equal(response.status,301);assert.equal(new URL(response.headers.get('location'),origin).pathname,'/');
 }
 for(const photo of [...snapshot.content.photos.hero,...snapshot.content.photos.moments]) {
-  if(photo.url.startsWith('/'))assert.equal((await fetch(new URL(photo.url,origin))).status,200,photo.url);
+  if(photo.url.startsWith('/')) {
+    const response=await fetch(new URL(photo.url,origin));
+    assert.equal(response.status,200,photo.url);
+    assert.match(response.headers.get('content-type')||'',/^image\//,`Photo URL must return an image, not an HTML page: ${photo.url}`);
+  }
 }
 console.log('Verified: exact exported menu/photo selections, public pages, QR asset, owner security headers, blocked anonymous access and retired-version redirects.');
