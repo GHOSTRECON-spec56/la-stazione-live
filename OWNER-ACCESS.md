@@ -2,9 +2,9 @@
 
 The owner workspace is https://lastazionelb.com/owner/. Google sign-in is required for editing, publishing and photo uploads. `lastazione10@gmail.com` is the primary owner. Only that account can add or remove editors in **Who can edit**. An added email must belong to a Google account; it does not have to end in `gmail.com`. Adding access does not send an email.
 
-## One-time activation still needed
+## Google configuration
 
-The implementation is complete, but no Google OAuth client ID or access to the site's Google/hosting account settings was available in this workspace. Until the following account configuration is completed, the workspace shows a setup message and all writes are blocked. There is no temporary open-access bypass. The Cloudflare migration is prepared separately; see [CLOUDFLARE-MIGRATION.md](CLOUDFLARE-MIGRATION.md).
+The owner's Google Client ID is deployed to Cloudflare as of 14 September 2026. Production checks found that Google accepts `https://www.lastazionelb.com` but rejects `https://lastazionelb.com`; add the latter to the existing client's Authorized JavaScript origins. The website enforces Google authentication and the primary-owner/editor access list. Real owner sign-in and publishing should be verified interactively. The instructions below document the configuration for maintenance; do not create a second OAuth client unnecessarily. See [CLOUDFLARE-MIGRATION.md](CLOUDFLARE-MIGRATION.md).
 
 1. In [Google Cloud's authentication console](https://console.cloud.google.com/auth/overview), use a project controlled by the coffee shop. Complete Google's required branding and consent information for La Stazione. Choose an External audience so the owner can later approve other Google accounts.
 2. Create an OAuth client with application type **Web application**. Add `https://lastazionelb.com` to **Authorized JavaScript origins**, without a path. If you use the `www` domain directly, also add `https://www.lastazionelb.com`. This button uses a JavaScript callback, so no redirect URI or client secret is needed. [Google's setup instructions](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid)

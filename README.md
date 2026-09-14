@@ -4,7 +4,7 @@ This is the deployment repository for [lastazionelb.com](https://lastazionelb.co
 It contains the public website, menu, owner workspace, and shared-content functions. Pushes to `main` deploy
 automatically through Netlify.
 
-Migration to **Cloudflare Free** is prepared on `migration/cloudflare`; the domain has not yet moved. Start with [CLOUDFLARE-MIGRATION.md](CLOUDFLARE-MIGRATION.md) for account setup, verified content import, Google login, domain cutover and rollback. The Cloudflare local preview is `http://localhost:8787/` using `npm run dev:cloudflare` after local storage initialization. The existing Netlify deployment remains available during the transition.
+**Production moved to Cloudflare Free on 14 September 2026.** Both the bare and `www` domains point to the Worker. The deployment code is on `migration/cloudflare`; use `npm run deploy:cloudflare` with the account-specific `wrangler.production.json` for updates. The historical `main` branch's Netlify integration remains a backup, not the current production release mechanism. See [CLOUDFLARE-MIGRATION.md](CLOUDFLARE-MIGRATION.md) and [verification notes](cloudflare/VERIFICATION.md). The Cloudflare local preview uses `npm run dev:cloudflare` after local storage initialization.
 
 The private `la-stazione-website` repository contains the complete source
 archive, original media, spreadsheets, and maintenance tools.
