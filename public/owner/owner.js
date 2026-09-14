@@ -99,6 +99,11 @@
   }
   function normalize(data) {
     if (!data || data.schemaVersion !== 1 || !data.menu || !data.photos || !['groups', 'categories', 'items', 'extras'].every(key => Array.isArray(data.menu[key])) || !['hero', 'moments'].every(key => Array.isArray(data.photos[key]))) throw new Error('This file is not a La Stazione content backup.');
+    data.menu.extras.forEach(section => {
+      if (!Array.isArray(section.groupIds)) section.groupIds = section.groupId ? [section.groupId] : [];
+      if (!Array.isArray(section.categoryIds)) section.categoryIds = [];
+      delete section.groupId;
+    });
     data.menu.title ??= 'Our menu'; data.menu.intro ??= '';
     data.menu.categories.forEach((category, index) => { category.order ??= index; });
     data.menu.items.forEach((item, index) => {
@@ -140,8 +145,15 @@
   function renderStructure() {
     editor.innerHTML = `<div class="tab-body"><section class="content-section"><div class="section-heading"><div><h2>Words at the top</h2><p>The heading and introduction guests see on the full menu.</p></div></div><div class="compact-form">${field('Menu title', 'menu.title', content.menu.title, { required: true })}${field('Menu introduction', 'menu.intro', content.menu.intro, { textarea: true })}</div></section><section class="content-section"><div class="section-heading"><div><h2>Menu groups</h2><p>The broad parts of your menu, such as drinks and food.</p></div><button type="button" class="button" data-action="add-group">Add group</button></div>${content.menu.groups.map((group, i) => `<div class="structure-row group-row"><div>${field('Group name', `menu.groups.${i}.label`, group.label, { required: true })}<small class="hint">${content.menu.categories.filter(category => category.groupId === group.id).length} categories</small></div><div class="row-actions">${iconButton('group-up', 'Move group earlier', i, i === 0)}${iconButton('group-down', 'Move group later', i, i === content.menu.groups.length - 1)}${iconButton('delete-group', 'Remove group', i)}</div></div>`).join('') || '<p class="hint">Add a group to organize your menu.</p>'}</section><section class="content-section"><div class="section-heading"><div><h2>Categories</h2><p>Change their names, move them between groups, and set their order.</p></div><button type="button" class="button" data-action="add-category">Add category</button></div>${content.menu.categories.map((category, i) => `<div class="structure-row"><div>${field('Category name', `menu.categories.${i}.label`, category.label, { required: true })}<small class="hint">${content.menu.items.filter(item => item.categoryId === category.id).length} items</small></div>${field('Menu group', `menu.categories.${i}.groupId`, category.groupId, { options: groupOptions() })}<div class="row-actions">${iconButton('category-up', 'Move category earlier', i, i === 0)}${iconButton('category-down', 'Move category later', i, i === content.menu.categories.length - 1)}${iconButton('delete-category', 'Remove category and its items', i)}</div></div>`).join('') || '<p class="hint">Add a category before adding menu items.</p>'}</section></div>`;
   }
+  function extraAssignments(section, sectionIndex) {
+    const choice = (kind, value, label, checked, disabled = false) => `<label class="extra-scope-option"><input type="checkbox" data-extra-scope="${kind}" data-section="${sectionIndex}" value="${escape(value)}" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''}><span>${escape(label)}</span></label>`;
+    return `<fieldset class="extra-assignments"><legend>Applies to</legend><p class="hint">Choose one or more categories or subcategories. A whole category includes all its subcategories.</p><div class="extra-scope-groups">${content.menu.groups.map(group => {
+      const whole = section.groupIds.includes(group.id);
+      return `<div class="extra-scope-group">${choice('groupIds', group.id, 'All ' + group.label, whole)}<div class="extra-scope-children">${content.menu.categories.filter(category => category.groupId === group.id).map(category => choice('categoryIds', category.id, category.label, whole || section.categoryIds.includes(category.id), whole)).join('')}</div></div>`;
+    }).join('')}</div></fieldset>`;
+  }
   function renderExtras() {
-    editor.innerHTML = `<div class="tab-body"><div class="section-heading"><div><h2>A little extra</h2><p>Manage priced additions, such as extra espresso or alternative milk.</p></div><button type="button" class="button" data-action="add-extra-group">Add section</button></div>${content.menu.extras.map((section, sectionIndex) => `<section class="extras-section"><div class="two-fields">${field('Section name', `menu.extras.${sectionIndex}.label`, section.label, { required: true })}${field('Applies to', `menu.extras.${sectionIndex}.groupId`, section.groupId, { options: groupOptions() })}</div>${section.items.map((extra, i) => `<div class="price-row extra-price-row">${field('Extra name', `menu.extras.${sectionIndex}.items.${i}.name`, extra.name, { required: true })}${field('USD', `menu.extras.${sectionIndex}.items.${i}.usd`, extra.usd, { type: 'number' })}${field('LBP', `menu.extras.${sectionIndex}.items.${i}.lbp`, extra.lbp, { type: 'number' })}<div class="row-actions">${iconButton('extra-up', 'Move extra earlier', i, i === 0, `data-section="${sectionIndex}"`)}${iconButton('extra-down', 'Move extra later', i, i === section.items.length - 1, `data-section="${sectionIndex}"`)}${iconButton('delete-extra', 'Remove extra', i, false, `data-section="${sectionIndex}"`)}</div></div>`).join('')}<div class="editor-footer"><button type="button" class="button" data-action="add-extra" data-index="${sectionIndex}">Add extra</button><div class="row-actions">${iconButton('extra-group-up', 'Move extras section earlier', sectionIndex, sectionIndex === 0)}${iconButton('extra-group-down', 'Move extras section later', sectionIndex, sectionIndex === content.menu.extras.length - 1)}<button type="button" class="text-button danger" data-action="delete-extra-group" data-index="${sectionIndex}">Remove section</button></div></div></section>`).join('') || '<div class="empty-state"><h2>Room for the finishing touches.</h2><p>Add an extras section to offer guests a little more.</p></div>'}</div>`;
+    editor.innerHTML = `<div class="tab-body"><div class="section-heading"><div><h2>A little extra</h2><p>Manage priced additions, such as extra espresso or alternative milk.</p></div><button type="button" class="button" data-action="add-extra-group">Add section</button></div>${content.menu.extras.map((section, sectionIndex) => `<section class="extras-section"><div class="two-fields">${field('Section name', `menu.extras.${sectionIndex}.label`, section.label, { required: true })}</div>${extraAssignments(section, sectionIndex)}${section.items.map((extra, i) => `<div class="price-row extra-price-row">${field('Extra name', `menu.extras.${sectionIndex}.items.${i}.name`, extra.name, { required: true })}${field('USD', `menu.extras.${sectionIndex}.items.${i}.usd`, extra.usd, { type: 'number' })}${field('LBP', `menu.extras.${sectionIndex}.items.${i}.lbp`, extra.lbp, { type: 'number' })}<div class="row-actions">${iconButton('extra-up', 'Move extra earlier', i, i === 0, `data-section="${sectionIndex}"`)}${iconButton('extra-down', 'Move extra later', i, i === section.items.length - 1, `data-section="${sectionIndex}"`)}${iconButton('delete-extra', 'Remove extra', i, false, `data-section="${sectionIndex}"`)}</div></div>`).join('')}<div class="editor-footer"><button type="button" class="button" data-action="add-extra" data-index="${sectionIndex}">Add extra</button><div class="row-actions">${iconButton('extra-group-up', 'Move extras section earlier', sectionIndex, sectionIndex === 0)}${iconButton('extra-group-down', 'Move extras section later', sectionIndex, sectionIndex === content.menu.extras.length - 1)}<button type="button" class="text-button danger" data-action="delete-extra-group" data-index="${sectionIndex}">Remove section</button></div></div></section>`).join('') || '<div class="empty-state"><h2>Room for the finishing touches.</h2><p>Add an extras section to offer guests a little more.</p></div>'}</div>`;
   }
   function renderPhotos() {
     const photos = content.photos[gallery];
@@ -171,8 +183,9 @@
     if (action === 'gallery') { gallery = button.dataset.gallery; renderPhotos(); return; }
     if (action === 'delete-group') {
       const group = content.menu.groups[index];
-      if (content.menu.categories.some(category => category.groupId === group.id) || content.menu.extras.some(section => section.groupId === group.id)) return notify('Move or remove this group’s categories and extras first. Then you can remove the empty group.', true);
+      if (content.menu.categories.some(category => category.groupId === group.id) || content.menu.extras.some(section => section.groupIds.includes(group.id))) return notify('Move or remove this group’s categories and extras first. Then you can remove the empty group.', true);
     }
+    if (action === 'delete-category' && content.menu.extras.some(section => section.categoryIds.includes(content.menu.categories[index].id))) return notify('Change the extras assigned to this subcategory before removing it.', true);
     mutate(() => {
       const item = currentItem();
       if (action === 'add-item') {
@@ -192,7 +205,7 @@
       if (action === 'add-category') { if (!content.menu.groups.length) content.menu.groups.push({ id: id('group'), label: 'Our menu' }); content.menu.categories.push({ id: id('category'), label: 'New category', groupId: content.menu.groups[0].id, order: content.menu.categories.length }); }
       if (action === 'delete-category') { const removed = content.menu.categories.splice(index, 1)[0]; content.menu.items = content.menu.items.filter(entry => entry.categoryId !== removed.id); if (categoryFilter === removed.id) categoryFilter = ''; }
       if (action === 'category-up' || action === 'category-down') { swap(content.menu.categories, index, action.endsWith('up') ? -1 : 1); content.menu.categories.forEach((entry, i) => { entry.order = i; }); }
-      if (action === 'add-extra-group') { if (!content.menu.groups.length) content.menu.groups.push({ id: id('group'), label: 'Our menu' }); content.menu.extras.push({ id: id('extras'), label: 'New extras', groupId: content.menu.groups[0].id, items: [] }); }
+      if (action === 'add-extra-group') { if (!content.menu.groups.length) content.menu.groups.push({ id: id('group'), label: 'Our menu' }); content.menu.extras.push({ id: id('extras'), label: 'New extras', groupIds: [content.menu.groups[0].id], categoryIds: [], items: [] }); }
       if (action === 'delete-extra-group') content.menu.extras.splice(index, 1);
       if (action === 'extra-group-up' || action === 'extra-group-down') swap(content.menu.extras, index, action.endsWith('up') ? -1 : 1);
       if (action === 'add-extra') content.menu.extras[index].items.push({ id: id('extra'), name: '', usd: null, lbp: null });
@@ -218,6 +231,17 @@
     }
   });
   editor.addEventListener('change', event => {
+    const input = event.target;
+    if (input.dataset.extraScope && !busy && !uploading) {
+      const kind = input.dataset.extraScope, index = Number(input.dataset.section), value = input.value;
+      mutate(() => {
+        const section = content.menu.extras[index];
+        section[kind] = input.checked ? [...new Set([...section[kind], value])] : section[kind].filter(id => id !== value);
+        if (kind === 'groupIds' && input.checked) section.categoryIds = section.categoryIds.filter(id => content.menu.categories.find(category => category.id === id)?.groupId !== value);
+      });
+      [...editor.querySelectorAll('[data-extra-scope]')].find(control => control.dataset.extraScope === kind && Number(control.dataset.section) === index && control.value === value)?.focus({preventScroll:true});
+      return;
+    }
     if (event.target.id === 'category-filter') { categoryFilter = event.target.value; $('#item-list').innerHTML = itemListHTML(); }
     if (event.target.dataset.path?.endsWith('.categoryId')) renderItems();
     if (event.target.dataset.path?.startsWith('photos.') && event.target.dataset.path.endsWith('.url')) renderPhotos();
@@ -263,6 +287,8 @@
       if (!item.prices.length || item.prices.some(price => !validPrice(price.usd) || !validPrice(price.lbp) || (price.usd == null && price.lbp == null))) { selectedId = item.id; tab = 'items'; return `Add a valid non-negative USD or LBP amount for every price of “${item.name}”.`; }
     }
     for (const section of menu.extras) {
+      if (!section.groupIds.length && !section.categoryIds.length) { tab = 'extras'; return 'Choose at least one category or subcategory for every extras section.'; }
+      if (section.groupIds.some(id => !menu.groups.some(group => group.id === id)) || section.categoryIds.some(id => !menu.categories.some(category => category.id === id))) { tab = 'extras'; return 'Choose existing categories and subcategories for every extras section.'; }
       if (!String(section.label).trim()) { tab = 'extras'; return 'Give every extras section a name.'; }
       for (const extra of section.items) if (!String(extra.name).trim() || !validPrice(extra.usd) || !validPrice(extra.lbp) || (extra.usd == null && extra.lbp == null)) { tab = 'extras'; return 'Give every extra a name and at least one valid non-negative price.'; }
     }

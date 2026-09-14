@@ -7,6 +7,21 @@ import {createContentHandler,validateContent} from '../lib/content-api.mjs';
 import {localStore} from '../tools/local-store.mjs';
 import seed from '../public/site-content/default.json' with {type:'json'};
 const clone=()=>structuredClone(seed);
+test('Extras support multiple whole categories and subcategories, with legacy compatibility and reference validation',()=>{
+  const data=clone(),extra=data.menu.extras[0];
+  extra.groupIds=['coffee','tea'];extra.categoryIds=['food-sandwiches','food-salads'];delete extra.groupId;
+  assert.doesNotThrow(()=>validateContent(data));
+  for(const invalid of [
+    {groupIds:[],categoryIds:[]},
+    {groupIds:['missing'],categoryIds:[]},
+    {groupIds:[],categoryIds:['missing']},
+    {groupIds:['coffee','coffee'],categoryIds:[]},
+    {groupIds:[],categoryIds:['food-sandwiches','food-sandwiches']},
+    {groupIds:'coffee',categoryIds:[]}
+  ])assert.throws(()=>validateContent({...data,menu:{...data.menu,extras:[{...extra,...invalid}]}}));
+  delete extra.groupIds;delete extra.categoryIds;extra.groupId='coffee';
+  assert.doesNotThrow(()=>validateContent(data));
+});
 const req=(method,body,headers={})=>new Request('http://localhost/.netlify/functions/content',{method,headers:{'Content-Type':'application/json',Origin:'http://localhost',...headers},...(body?{body:JSON.stringify(body)}:{})});
 test('Original prices and all menu items are preserved',()=>{assert.equal(seed.menu.items.length,103);assert.equal(seed.menu.items.reduce((n,i)=>n+i.prices.length,0),168);validateContent(clone());});
 test('Invalid references, duplicate IDs, unsafe image links and negative prices are rejected',()=>{

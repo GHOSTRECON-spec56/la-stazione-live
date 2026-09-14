@@ -2262,7 +2262,6 @@
       {
         "id": "bread-extras",
         "label": "Your choice of bread",
-        "groupId": "food",
         "items": [
           {
             "id": "bread-extra-0",
@@ -2288,6 +2287,10 @@
             "lbp": 0,
             "usd": 0
           }
+        ],
+        "groupIds": [],
+        "categoryIds": [
+          "food-sandwiches"
         ]
       }
     ]

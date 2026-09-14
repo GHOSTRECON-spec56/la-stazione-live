@@ -70,11 +70,14 @@
     return `<details class="menu-extras" data-menu-extras="${escape(extra.id)}"${query ? " open" : ""}><summary>${escape(extra.label)}<span class="menu-extras-marker" aria-hidden="true">+</span></summary><div class="menu-extras-content"><dl class="menu-extras-list">${options.map(option => `<div><dt>${escape(option.name)}</dt><dd>${option[state.currency] === 0 ? "Included" : Number.isFinite(option[state.currency]) ? `+${escape(price(option[state.currency]))}` : "Ask in store"}</dd></div>`).join("")}</dl></div></details>`;
   }
 
+  const extraGroups = extra => Array.isArray(extra.groupIds) ? extra.groupIds : extra.groupId ? [extra.groupId] : [];
+  const extraCategories = extra => Array.isArray(extra.categoryIds) ? extra.categoryIds : [];
+
   function renderResults() {
     const results = mount.querySelector(".menu-results");
     const query = normalize(state.query.trim());
     const filtered = items.filter(item => query ? normalize([item.name, item.category, item.groupLabel, item.details || "", ...item.options, ...(item.prices || []).map(variant => variant.label || "")].join(" ")).includes(query) : (state.main === "All" || item.groupId === state.main) && (state.category === "All" || item.categoryId === state.category));
-    const extras = (Array.isArray(source.extras) ? source.extras : []).filter(extra => query || state.main === "All" || extra.groupId === state.main);
+    const extras = Array.isArray(source.extras) ? source.extras : [];
     const extraResults = query ? extras.reduce((count, extra) => count + (extra.items || []).filter(option => normalize(`${extra.label} ${option.name}`).includes(query)).length, 0) : 0;
     const openExtras = [...results.querySelectorAll("details[open]")].map(detail => detail.dataset.menuExtras);
     mount.querySelector(".menu-results-count").textContent = query ? `${filtered.length} ${filtered.length === 1 ? "item" : "items"}${extraResults ? ` and ${extraResults} ${extraResults === 1 ? "extra" : "extras"}` : ""} across the full menu` : `${filtered.length} ${filtered.length === 1 ? "item" : "items"} · ${state.currency.toUpperCase()} prices`;
@@ -84,9 +87,12 @@
       results.innerHTML = groups.map(group => {
         const sections = categories.filter(category => category.groupId === group.id).map(category => {
           const matches = filtered.filter(item => item.categoryId === category.id);
-          return matches.length ? `<section class="menu-result-group" aria-labelledby="menu-group-${escape(category.id)}"><div class="menu-group-heading"><h2 id="menu-group-${escape(category.id)}">${escape(category.label)}</h2></div><div class="menu-result-list">${matches.map(item => renderItem(item)).join("")}</div></section>` : "";
+          const inView = query || ((state.main === "All" || state.main === group.id) && (state.category === "All" || state.category === category.id));
+          const additions = inView ? extras.filter(extra => !extraGroups(extra).includes(group.id) && extraCategories(extra).includes(category.id)).map(extra => renderExtras(extra, query)).join("") : "";
+          return matches.length || additions ? `<section class="menu-result-group" aria-labelledby="menu-group-${escape(category.id)}"><div class="menu-group-heading"><h2 id="menu-group-${escape(category.id)}">${escape(category.label)}</h2></div><div class="menu-result-list">${matches.map(item => renderItem(item)).join("")}</div>${additions}</section>` : "";
         }).join("");
-        return sections + extras.filter(extra => extra.groupId === group.id).map(extra => renderExtras(extra, query)).join("");
+        const groupVisible = query || state.main === "All" || state.main === group.id;
+        return sections + (groupVisible ? extras.filter(extra => extraGroups(extra).includes(group.id)).map(extra => renderExtras(extra, query)).join("") : "");
       }).join("");
       results.querySelectorAll("details").forEach(detail => { detail.open = Boolean(query) || openExtras.includes(detail.dataset.menuExtras); });
     }
