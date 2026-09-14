@@ -10,6 +10,19 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# Send visitors with cached Netlify DNS to the active owner workspace.
+[[redirects]]
+  from = "/owner"
+  to = "https://la-stazione.la-stazione-site.workers.dev/owner/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/owner/*"
+  to = "https://la-stazione.la-stazione-site.workers.dev/owner/:splat"
+  status = 302
+  force = true
+
 [[headers]]
   for = "/owner/*"
   [headers.values]
